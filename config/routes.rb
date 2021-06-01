@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   end
   devise_for :users
   root to: 'pages#home'
+  get 'oauth2/connect', to: 'facebook#connect'
+  get 'oauth2/callback', to: 'facebook#callback'
 end

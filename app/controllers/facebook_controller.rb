@@ -10,8 +10,8 @@ class FacebookController < ApplicationController
     client = OAuth2::Client.new(ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], site: 'https://graph.facebook.com', token_url: "/oauth/access_token")
     auth_code = params[:code]
     token = client.auth_code.get_token(auth_code, redirect_uri: 'https://localhost:3000/oauth2/callback', headers: {'Authorization' => 'Basic some_password'})
-    current_user.facebook_access_token = token
-    current_user.save
+    # current_user.facebook_access_token = token
+    # current_user.save
     response = token.get('/me/accounts')
     json = JSON.parse(response.body)
     artists = json["data"]
@@ -32,6 +32,9 @@ class FacebookController < ApplicationController
       id = artist["id"]
       picture = get_picture(token, id)
       access_token = artist["access_token"]
+      artist = Artist.new(name: name, id_facebook: id, picture: picture)
+      artist.user = current_user
+      artist.save!
     end
   end
 end
