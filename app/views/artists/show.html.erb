@@ -1,2 +1,8 @@
 <h1>Artists#show</h1>
-<p>Find me in app/views/artists/show.html.erb</p>
+
+
+
+<%= @artist.name %>
+
+ <img src="<%= @artist.picture %>" alt="">
+ <%= link_to "new post", new_artist_post_url(@artist)%>
