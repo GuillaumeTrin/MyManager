@@ -4,7 +4,7 @@ class CreateArtists < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :id_facebook
       t.string :picture
-      t.user :references
+      t.references :user
 
       t.timestamps
     end

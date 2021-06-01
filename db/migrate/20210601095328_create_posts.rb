@@ -6,8 +6,8 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.string :image
       t.boolean :published
       t.date :published_at
-      t.artist :references
-      t.album :references
+      t.references :artist
+      t.references :album
 
       t.timestamps
     end
