@@ -1,2 +1,9 @@
-<h1>Artists#index</h1>
-<p>Find me in app/views/artists/index.html.erb</p>
+<div class="container">
+  <div class="row">
+      <% @artists.each do |artist| %>
+        <div class="artist">
+           <img src="<%= artist.picture %>" alt="">
+              <p class="name"><%= artist.name %></p>
+        </div>
+  </div>
+</div>
