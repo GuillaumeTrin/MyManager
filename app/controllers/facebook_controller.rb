@@ -2,16 +2,16 @@ class FacebookController < ApplicationController
 
   def connect
     client = OAuth2::Client.new(ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], site: 'https://graph.facebook.com', token_url: "/oauth/access_token")
-    url = client.auth_code.authorize_url(redirect_uri: 'https://localhost:3000/oauth2/callback', scope: "read_insights, pages_show_list,pages_manage_posts,pages_read_engagement")
+    url = client.auth_code.authorize_url(redirect_uri: 'http://localhost:3000/oauth2/callback', scope: "read_insights, pages_show_list,pages_manage_posts,pages_read_engagement")
     redirect_to url
   end
 
   def callback
     client = OAuth2::Client.new(ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], site: 'https://graph.facebook.com', token_url: "/oauth/access_token")
     auth_code = params[:code]
-    token = client.auth_code.get_token(auth_code, redirect_uri: 'https://localhost:3000/oauth2/callback', headers: {'Authorization' => 'Basic some_password'})
-    # current_user.facebook_access_token = token
-    # current_user.save
+    token = client.auth_code.get_token(auth_code, redirect_uri: 'http://localhost:3000/oauth2/callback', headers: {'Authorization' => 'Basic some_password'})
+    current_user.facebook_access_token = token
+    current_user.save
     response = token.get('/me/accounts')
     json = JSON.parse(response.body)
     artists = json["data"]
@@ -33,7 +33,7 @@ class FacebookController < ApplicationController
       id = artist["id"]
       picture = get_picture(token, id)
       access_token = artist["access_token"]
-      artist = Artist.new(name: name, id_facebook: 1234, picture: picture)
+      artist = Artist.new(name: name, id_facebook: id, picture: picture, facebook_access_token: access_token)
       artist.user = current_user
       artist.save
     end
