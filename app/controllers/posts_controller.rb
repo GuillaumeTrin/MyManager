@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_artist, only: [:new]
 
   def index
     @posts = Post.all
@@ -39,5 +40,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content, :image, :published, :published_at)
+  end
+
+  def set_artist
+    @artist = Artist.find(params[:artist_id])
   end
 end
