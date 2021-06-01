@@ -15,7 +15,8 @@ class FacebookController < ApplicationController
     response = token.get('/me/accounts')
     json = JSON.parse(response.body)
     artists = json["data"]
-    create_artist(artists, token)
+    create_artists(artists, token)
+    redirect_to artists_path
   end
 
   private
@@ -26,15 +27,15 @@ class FacebookController < ApplicationController
     picture["data"]["url"]
   end
 
-  def create_artist(artists, token)
+  def create_artists(artists, token)
     artists.each do |artist|
       name = artist["name"]
       id = artist["id"]
       picture = get_picture(token, id)
       access_token = artist["access_token"]
-      artist = Artist.new(name: name, id_facebook: id, picture: picture)
+      artist = Artist.new(name: name, id_facebook: 1234, picture: picture)
       artist.user = current_user
-      artist.save!
+      artist.save
     end
   end
 end
