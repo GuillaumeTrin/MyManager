@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save!
-      redirect_to artist_path, notice: "You've just created a new post"
+      redirect_to artist_path(@post.artist), notice: "You've just created a new post"
     else
       render :new
     end
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
-    redirect_to artist_path
+    redirect_to artist_path(@post.artist)
   end
 
   def delete
