@@ -1,8 +1,18 @@
 class FacebookController < ApplicationController
 
   def connect
+    ap "ascope"
+    ap %W[read_insights
+                  pages_show_list
+                  pages_manage_posts
+                  pages_read_engagement].join(',')
     client = OAuth2::Client.new(ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], site: 'https://graph.facebook.com', token_url: "/oauth/access_token")
-    url = client.auth_code.authorize_url(redirect_uri: 'http://localhost:3000/oauth2/callback', scope: "read_insights, pages_show_list,pages_manage_posts,pages_read_engagement")
+    url = client.auth_code.authorize_url(redirect_uri: 'http://localhost:3000/oauth2/callback',
+        scope: %W[read_insights
+                  pages_show_list
+                  pages_manage_posts
+                  pages_read_engagement].join(','))
+
     redirect_to url
   end
 
@@ -28,6 +38,7 @@ class FacebookController < ApplicationController
   end
 
   def create_artists(artists, token)
+    Artist.destroy_all # todo remove this line
     artists.each do |artist|
       name = artist["name"]
       id = artist["id"]
@@ -35,7 +46,7 @@ class FacebookController < ApplicationController
       access_token = artist["access_token"]
       artist = Artist.new(name: name, id_facebook: id, picture: picture, facebook_access_token: access_token)
       artist.user = current_user
-      artist.save
+      artist.save!
     end
   end
 end

@@ -4,8 +4,8 @@
         <div class="artist">
            <img src="<%= artist.picture %>" alt="">
               <p class="name"><%= artist.name %></p>
+              <p><%= link_to 'See More', artist_path(artist) %></p>
         </div>
-
       <% end %>
   </div>
 </div>

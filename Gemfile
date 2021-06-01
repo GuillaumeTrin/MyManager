@@ -62,3 +62,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'oauth2'
 gem "simple_calendar", "~> 2.4"
+gem "awesome_print", "~> 1.9"
