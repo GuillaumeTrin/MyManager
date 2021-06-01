@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+
+  resources :artists, only: [:show, :index] do
+    resources :posts
+    resources :albums, only: [:index, :show, :new, :create]
+  end
   devise_for :users
   root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
