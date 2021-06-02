@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :schedule]
   before_action :set_artist, only: [:new, :create]
 
   def index
@@ -33,6 +33,12 @@ class PostsController < ApplicationController
     @post = Post.destroy
   end
 
+  def schedule
+    if @post.published_at
+      schedule_post(@post)
+    end
+  end
+
   private
 
   def set_post
@@ -47,9 +53,7 @@ class PostsController < ApplicationController
     @artist = Artist.find(params[:artist_id])
   end
 
-  def post_fb(artist, content)
-    client = OAuth2::Client.new(ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], site: 'https://graph.facebook.com', token_url: "/oauth/access_token")
-    token = OAuth2::AccessToken.new(client,artist.facebook_access_token)
-    token.post("#{artist.id_facebook}/feed", params: { message: content})
+  def schedule_post(post)
+    PostToFacebookJob.set(wait_until: post.published_at).perform_later(post)
   end
 end
