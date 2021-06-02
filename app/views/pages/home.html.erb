@@ -1,8 +1,5 @@
-<%= month_calendar(events: @posts) do |date, posts| %>
-  <%= date.day %>
-  <% posts.each do |post| %>
-    <div>
-      <%= post.title %>
-    </div>
-  <% end %>
-<% end %>
+<h1> My Manager </h1>
+<h2>Plan killer communications on Facebook for your artists</h2>
+
+<%= link_to "Sign-up", new_user_registration_path %>
+<%= link_to "Log-in",  new_user_session_path %>

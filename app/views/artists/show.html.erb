@@ -1,8 +1,28 @@
-<h1>Artists#show</h1>
+<h1> <%= @artist.name %> </h1>
+<img src="<%= @artist.picture %>" alt="">
+
+<hr>
+
+<h2> Your planning this month</h2>
+
+<%= month_calendar(events: @posts) do |date, posts| %>
+  <%= date.day %>
+  <% posts.each do |post| %>
+    <div>
+      <%= post.title %>
+    </div>
+  <% end %>
+<% end %>
+
+<hr>
+
+ <%= link_to "Plannifier un post", new_artist_post_url(@artist)%>
+
+ <hr>
+
+<h2> Release </h2>
 
 
+<hr>
 
-<%= @artist.name %>
-
- <img src="<%= @artist.picture %>" alt="">
- <%= link_to "new post", new_artist_post_url(@artist)%>
+<h2> Useful links </h2>

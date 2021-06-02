@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'oauth2/connect', to: 'facebook#connect'
   get 'oauth2/callback', to: 'facebook#callback'
+  get '/dashboard', to: 'dashboards#dashboard'
+  get '/disconnect', to: 'facebook#disconnect'
 end
