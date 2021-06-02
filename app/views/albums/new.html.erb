@@ -1,2 +1,7 @@
-<h1>Albums#new</h1>
-<p>Find me in app/views/albums/new.html.erb</p>
+<h1> Plan the release of an album </h1>
+
+  <%= simple_form_for([@artist, @album]) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :out_at %>
+    <%= f.submit %>
+  <% end %>

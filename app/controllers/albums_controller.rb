@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show]
+  before_action :set_artist, only: [:new, :create]
 
   def index
     @albums = Album.all
@@ -14,8 +15,9 @@ class AlbumsController < ApplicationController
 
   def create
     @album = Album.new(album_params)
-    if @album.save
-      redirect_to artist_path(@album.artist)
+    @album.artist = @artist
+    if @album.save!
+      redirect_to artist_album_path(@artist, @album)
     else
       render :new
     end
@@ -25,6 +27,10 @@ class AlbumsController < ApplicationController
 
   def set_album
     @album = Album.find(params[:id])
+  end
+
+  def set_artist
+    @artist = Artist.find(params[:artist_id])
   end
 
   def album_params
