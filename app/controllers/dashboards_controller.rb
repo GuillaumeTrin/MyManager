@@ -4,6 +4,7 @@ class DashboardsController < ApplicationController
   def dashboard
     @artists = Artist.where(user: current_user)
     @posts = Post.where(artist: @artists)
+    @today_posts = Post.where(published_at: Date.today)
   end
 
   def home

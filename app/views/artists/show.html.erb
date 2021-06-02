@@ -1,8 +1,5 @@
-<h1>Artists#show</h1>
+<h1> <%= @artist.name %> </h1>
+<img src="<%= @artist.picture %>" alt="">
 
 
-
-<%= @artist.name %>
-
- <img src="<%= @artist.picture %>" alt="">
- <%= link_to "new post", new_artist_post_url(@artist)%>
+ <%= link_to "Plannifier un post", new_artist_post_url(@artist)%>

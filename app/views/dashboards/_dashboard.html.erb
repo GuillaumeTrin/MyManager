@@ -1,3 +1,5 @@
+<h2>Your planning this month</h2>
+
 <%= month_calendar(events: @posts) do |date, posts| %>
   <%= date.day %>
   <% posts.each do |post| %>
@@ -7,4 +9,29 @@
   <% end %>
 <% end %>
 
+<hr>
+
+<h2>Planned Today <%= Date.today.strftime("%d/%m/%Y") %> </h2>
+
+<% @today_posts.each do |post| %>
+  <%= post.artists.name %>
+  <%= post.title %>
+<% end %>
+
+<hr>
+
+<h2> All your artists </h2>
+
+<% @artists.each do |artist| %>
+  <img src="<%= artist.picture %>" alt="">
+  <%= link_to artist.name, artist_path(artist) %>
+<% end %>
+
+<hr>
+
+<h2> Latest stats </h2>
+
+<hr>
+
 <%= link_to 'Disconnect Facebook', disconnect_path %>
+
