@@ -47,9 +47,9 @@ class FacebookController < ApplicationController
     artists.each do |artist|
       name = artist["name"]
       id = artist["id"]
-      picture = get_picture(token, id)
+      # picture = get_picture(token, id)
       access_token = artist["access_token"]
-      artist = Artist.new(name: name, id_facebook: id, picture: picture, facebook_access_token: access_token)
+      artist = Artist.new(name: name, id_facebook: id, facebook_access_token: access_token)
       artist.user = current_user
       artist.save!
     end
