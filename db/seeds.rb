@@ -19,7 +19,7 @@ artist_ephemeris.picture.attach(io: artist_picture, filename: 'ephemeris_pictiur
 album_moobbow = Album.create!(name: "Moonbow", out_at: "2021-06-15", artist: artist_ephemeris)
 album_moobbow.cover.attach(io: cover_album, filename: 'ephemeris_album.jpg', content_type: 'image/jpg')
 
-post_announce_album1 = Post.create!(title: "Announce Album", content: "Our next on Sahman Records, is an impressive collaboration between our home artist Ephemeris and the talented producer Waveorm from Grece. This epic trancer will float you gently to a pure trippy oasis ! Available the 12.10.20 !", artist: artist_ephemeris, album: album_moobbow)
+post_announce_album1 = Post.create!(title: "Announce Album", content: "Our next on Sahman Records, is an impressive collaboration between our home artist Ephemeris and the talented producer Waveorm from Grece. This epic trancer will float you gently to a pure trippy oasis ! Available the 12.10.20 !", published_at: Date.today ,artist: artist_ephemeris, album: album_moobbow)
 
 
 
