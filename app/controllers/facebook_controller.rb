@@ -26,7 +26,12 @@ class FacebookController < ApplicationController
     json = JSON.parse(response.body)
     artists = json["data"]
     create_artists(artists, token)
-    redirect_to artists_path
+    redirect_to dashboard_path
+  end
+
+  def disconnect
+    current_user.update(facebook_access_token: nil)
+    redirect_to dashboard_path
   end
 
   private

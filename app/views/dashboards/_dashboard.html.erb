@@ -1,0 +1,10 @@
+<%= month_calendar(events: @posts) do |date, posts| %>
+  <%= date.day %>
+  <% posts.each do |post| %>
+    <div>
+      <%= post.title %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= link_to 'Disconnect Facebook', disconnect_path %>
