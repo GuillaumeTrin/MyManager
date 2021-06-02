@@ -16,6 +16,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.artist = @artist
     if @post.save!
+      schedule_post(@post)
       redirect_to artist_path(@post.artist), notice: "You've just created a new post"
     else
       render :new
