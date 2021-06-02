@@ -15,7 +15,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.artist = @artist
-    post_fb(@post.artist, @post.content)
     if @post.save!
       redirect_to artist_path(@post.artist), notice: "You've just created a new post"
     else
