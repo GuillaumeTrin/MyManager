@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  require "sidekiq/web"
+    mount Sidekiq::Web => '/sidekiq'
+
   resources :artists, only: [:show, :index] do
     resources :posts
     resources :albums, only: [:index, :show, :new, :create]
