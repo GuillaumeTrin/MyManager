@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :schedule]
-  before_action :set_artist, only: [:new, :create]
+  before_action :set_artist, only: [:new, :create, :edit]
 
   def index
     @posts = Post.all
@@ -27,6 +27,7 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
+    reschedule_post(@post)
     redirect_to artist_path(@post.artist)
   end
 
@@ -55,6 +56,12 @@ class PostsController < ApplicationController
   end
 
   def schedule_post(post)
-    PostToFacebookJob.set(wait_until: post.published_at).perform_later(post.id)
+    job_id = PostToFacebookJob.set(wait_until: post.published_at).perform_later(post.id)
+    post.job_id = job_id.provider_job_id
+    post.save
+  end
+
+  def reschedule_post(post)
+    RescheduleFacebookJob.perform_now(post)
   end
 end

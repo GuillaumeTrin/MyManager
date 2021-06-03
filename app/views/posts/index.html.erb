@@ -1,0 +1,3 @@
+<% @posts.each do |post| %>
+   <%= link_to post.title, edit_artist_post_path(post.artist_id, post.id ) %>
+<% end%>

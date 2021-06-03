@@ -1,0 +1,11 @@
+<div class="container login-container">
+    <h1> Edit the </h1>
+
+<%= simple_form_for([@artist, @post]) do |f| %>
+    <div class="form-inputs">
+        <%= f.input :title %>
+        <%= f.input :content %>
+        <%= f.input :published_at %>
+        <%= f.submit %>
+<% end %>
+</div>
