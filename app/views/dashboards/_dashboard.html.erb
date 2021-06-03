@@ -24,7 +24,7 @@
 <h2> All your artists </h2>
 
 <% @artists.each do |artist| %>
-  <img src="<%= artist.picture %>" alt="">
+  <%= cl_image_tag artist.picture.key, height: 300, width: 400, crop: :fill %>
   <%= link_to artist.name, artist_path(artist) %>
 <% end %>
 
