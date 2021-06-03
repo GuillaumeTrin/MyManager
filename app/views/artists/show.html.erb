@@ -5,21 +5,29 @@
 
 <h2> Your planning this month</h2>
 
-<%= month_calendar(events: @posts) do |date, posts| %>
-  <%= date.day %>
-  <% posts.each do |post| %>
-    <div>
-      <%= post.published_at.strftime("%H:%M") %> <%= post.title %>
-    </div>
-  <% end %>
-<% end %>
+<%= render 'dashboards/calendar', posts: @artist.posts, only_artist: true %>
 
 <hr>
+
+
+<h2>Planned Today <%= Date.today.strftime("%d/%m/%Y") %> </h2>
+<p>Here are the posts and events planned for <%= @artist.name %> today</p>
+
+<ul>
+  <% @today_posts.each do |post| %>
+  <li>
+    <%= post.published_at.strftime("%H:%M") %>
+    <%= post.title %>
+    <%= post.content %>
+  </li>
+  <% end %>
+</ul>
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Ajouter un évènement
 </button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

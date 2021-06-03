@@ -1,0 +1,8 @@
+<%= month_calendar(events: posts) do |date, posts| %>
+  <%= date.day %>
+  <% posts.each do |post| %>
+    <div>
+     <%= post.published_at.strftime("%H:%M") %> <%= post.title %> <%= post.artist.name unless only_artist %>
+    </div>
+  <% end %>
+<% end %>
