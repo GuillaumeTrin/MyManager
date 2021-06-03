@@ -25,6 +25,10 @@ class PostsController < ApplicationController
 
   def edit; end
 
+  def destroy
+    @post.destroy
+  end
+
   def update
     @post.update(post_params)
     reschedule_post(@post)
