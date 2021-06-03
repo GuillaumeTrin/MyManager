@@ -9,7 +9,7 @@
   <%= date.day %>
   <% posts.each do |post| %>
     <div>
-      <%= post.title %>
+      <%= post.published_at.strftime("%H:%M") %> <%= post.title %>
     </div>
   <% end %>
 <% end %>
