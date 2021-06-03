@@ -1,2 +1,14 @@
 <h1>Albums#show</h1>
-<p>Find me in app/views/albums/show.html.erb</p>
+
+
+ <%= @album.name %>
+  <% @album.posts.each do |post| %>
+    <div class="card-product">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <%= post.published_at %>
+        </div>
+    </div>
+<% end %>
+
+
