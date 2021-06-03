@@ -55,6 +55,6 @@ class PostsController < ApplicationController
   end
 
   def schedule_post(post)
-    PostToFacebookJob.set(wait_until: post.published_at).perform_later(post)
+    PostToFacebookJob.set(wait_until: post.published_at).perform_later(post.id)
   end
 end
