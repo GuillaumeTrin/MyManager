@@ -2,7 +2,7 @@
   <div class="row">
       <% @artists.each do |artist| %>
         <div class="artist">
-           <img src="<%= artist.picture %>" alt="">
+           <%= cl_image_tag artist.picture.key, height: 300, width: 400, crop: :fill %>
               <p class="name"><%= artist.name %></p>
               <p><%= link_to 'See More', artist_path(artist) %></p>
         </div>

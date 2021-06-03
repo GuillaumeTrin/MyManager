@@ -1,6 +1,6 @@
 <h1> <%= @artist.name %> </h1>
-<img src="<%= @artist.picture %>" alt="">
 
+<%= cl_image_tag @artist.picture.key, height: 300, width: 400, crop: :fill %>
 <hr>
 
 <h2> Your planning this month</h2>

@@ -1,3 +1,4 @@
+require "open-uri"
 class FacebookController < ApplicationController
 
   def connect
@@ -47,9 +48,11 @@ class FacebookController < ApplicationController
     artists.each do |artist|
       name = artist["name"]
       id = artist["id"]
-      # picture = get_picture(token, id)
+      picture_url = get_picture(token, id)
+      img_file = URI.open(picture_url)
       access_token = artist["access_token"]
       artist = Artist.new(name: name, id_facebook: id, facebook_access_token: access_token)
+      artist.picture.attach(io: img_file, filename: "#{name}pic.png", content_type: 'image/png')
       artist.user = current_user
       artist.save!
     end
