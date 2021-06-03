@@ -15,11 +15,9 @@
 <p>Here are the posts and events planned for today</p>
 
 <% @today_posts.each do |post| %>
-  <%= post.artists.name %>
+  <%= post.artist.name %>
   <%= post.title %>
 <% end %>
-
-<hr>
 
 <h2> All your artists </h2>
 
