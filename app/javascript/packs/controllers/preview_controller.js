@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
   // your logic (controller actions)
-  static targets = ['title', 'previewTitle', 'content', 'previewContent', 'image', 'previewImage'];
+  static targets = ['title', 'previewTitle', 'content', 'previewContent', 'image', 'previewImage', 'date', 'previewDate'];
 
   gettitle() {
     const titleContent = this.titleTarget.value;
@@ -20,5 +20,12 @@ export default class extends Controller {
     console.log(URL.createObjectURL(file))
     console.log(this.previewImageTarget)
     this.previewImageTarget.src = URL.createObjectURL(file)
+  }
+
+  getdate() {
+    const dateContent = this.dateTarget.value;
+    const date = new Date(Date.parse(dateContent))
+    console.log(date.format('YYYY-MM-DD'))
+    this.previewDateTarget.innerText = dateContent;
   }
 }

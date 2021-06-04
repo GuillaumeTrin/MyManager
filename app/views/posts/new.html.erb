@@ -7,7 +7,7 @@
         <%= f.input :title, input_html: { "data-preview-target": "title", "data-action": "input->preview#gettitle" } %>
         <%= f.input :content, input_html: { "data-preview-target": "content", "data-action": "input->preview#getcontent" } %>
         <%= f.input :picture, as: :file, input_html: { "data-preview-target": "image", "data-action": "change->preview#getimage" } %>
-        <%= f.input :published_at %>
+        <%= f.input :published_at, html5: true, input_html: { "data-preview-target": "date", "data-action": "change->preview#getdate" } %>
         <%= f.submit %>
       <% end %>
       </div>
@@ -26,6 +26,9 @@
 
         </div>
         <img src="https://images.vexels.com/media/users/3/131734/isolated/preview/05d86a9b63d1930d6298b27081ddc345-photo-preview-frame-icon-by-vexels.png" alt="toto" width="200" data-preview-target="previewImage">
+        <div data-preview-target="previewDate">
+
+        </div>
       </div>
     </div>
   </div>
