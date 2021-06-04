@@ -7,10 +7,8 @@ class ArtistsController < ApplicationController
     @today_posts = Post.where(published_at: Date.today..Date.today + 1.days, artist: @artist)
 
     stats_json = getstats(@artist)
-    
-    @stats = statextract(stats_json)
-    raise
 
+    @stats = statextract(stats_json)
   end
 
   def index
