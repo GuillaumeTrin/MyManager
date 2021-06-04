@@ -1,14 +1,37 @@
 <h1>Albums#show</h1>
 
+<% if @generated_posts %>
+  <% @generated_posts.each do |post| %>
+    <div data-controller="preview">
+          <%= simple_form_for([@album.artist, post]) do |f| %>
+            <div class="form-inputs">
+              <%= f.input :title, input_html: { "data-preview-target": "title", "data-action": "input->preview#gettitle" } %>
+              <%= f.input :content, input_html: { "data-preview-target": "content", "data-action": "input->preview#getcontent" } %>
+              <%= f.input :picture, as: :file, input_html: { "data-preview-target": "image", "data-action": "change->preview#getimage" } %>
+              <%= f.input :published_at %>
+              <%= f.submit %>
+          <% end %>
+            </div>
 
- <%= @album.name %>
-  <% @album.posts.each do |post| %>
-    <div class="card-product">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-product-infos">
-          <%= post.published_at %>
+        <div class="preview">
+          <div class="header">
+            <%= cl_image_tag @album.artist.picture.key, class: "avatar" %>
+            <div class="text">
+              <p> <%= @album.artist.name %> </p>
+              <p> date and time </p>
+            </div>
+            <div data-preview-target="previewTitle">
+
+            </div>
+             <div data-preview-target="previewContent">
+
+            </div>
+            <img src="https://images.vexels.com/media/users/3/131734/isolated/preview/05d86a9b63d1930d6298b27081ddc345-photo-preview-frame-icon-by-vexels.png" alt="toto" width="200" data-preview-target="previewImage">
+          </div>
         </div>
+      </div>
     </div>
+  <% end %>
 <% end %>
 
-
+<%= link_to "Validate my content",  artist_path(@album.artist) %>
