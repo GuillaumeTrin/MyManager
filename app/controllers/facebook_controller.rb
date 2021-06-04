@@ -8,7 +8,7 @@ class FacebookController < ApplicationController
                   pages_manage_posts
                   pages_read_engagement].join(',')
     client = OAuth2::Client.new(ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], site: 'https://graph.facebook.com', token_url: "/oauth/access_token")
-    url = client.auth_code.authorize_url(redirect_uri: 'http://localhost:3000/oauth2/callback',
+    url = client.auth_code.authorize_url(redirect_uri: "#{ENV['CALLBACK_URL']}/oauth2/callback",
         scope: %W[read_insights
                   pages_show_list
                   pages_manage_posts
@@ -20,7 +20,7 @@ class FacebookController < ApplicationController
   def callback
     client = OAuth2::Client.new(ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], site: 'https://graph.facebook.com', token_url: "/oauth/access_token")
     auth_code = params[:code]
-    token = client.auth_code.get_token(auth_code, redirect_uri: 'http://localhost:3000/oauth2/callback', headers: {'Authorization' => 'Basic some_password'})
+    token = client.auth_code.get_token(auth_code, redirect_uri: "#{ENV['CALLBACK_URL']}/oauth2/callback", headers: {'Authorization' => 'Basic some_password'})
     current_user.facebook_access_token = token
     current_user.save
     response = token.get('/me/accounts')
