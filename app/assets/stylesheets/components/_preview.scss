@@ -2,10 +2,36 @@
   margin-top: 32px;
   background-color: white;
   width: 500px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid rgb(200, 200, 200);
 }
 
-// .header {
-//   display: flex;
-//   justify-content: space-around;
-// }
+.header {
+  display: flex;
+}
 
+.text p {
+  color: #3b5998;
+  font-weight: 500;
+  position: absolute;
+}
+
+.previewDate {
+  color: rgb(180, 180, 180);
+  font-size: 13px;
+  position: relative;
+  top: 20px;
+}
+
+.previewTitle {
+  margin-top: 8px;
+}
+
+.previewContent {
+  margin-top: 8px;
+}
+
+.previewImage {
+  width: 100%;
+}

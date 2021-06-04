@@ -24,8 +24,16 @@ export default class extends Controller {
 
   getdate() {
     const dateContent = this.dateTarget.value;
-    const date = new Date(Date.parse(dateContent))
-    console.log(date.format('YYYY-MM-DD'))
-    this.previewDateTarget.innerText = dateContent;
+    const date = new Date(Date.parse(dateContent));
+    const option_date = date.toLocaleString('fr-FR', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+    const option_time = date.toLocaleString('fr-FR', {
+      hour: 'numeric',
+      minute: 'numeric',
+    });
+    this.previewDateTarget.innerText = `${option_date}, at ${option_time}`;
   }
 }
