@@ -4,6 +4,6 @@
    <%= post.title %>
 
    <%= link_to "Edit this post", edit_artist_post_path(post.artist_id, post.id ) %>
-   <%= link_to "Destroy this post", artist_post_path(post.artist_id, post.id), method: :delete, class: 'link-delete'  %>
+   <%= link_to "Destroy this post", artist_post_path(post.artist_id, post.id), method: :delete,  class: 'link-delete'  %>
 </div>
 <% end%>

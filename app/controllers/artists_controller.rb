@@ -7,7 +7,9 @@ class ArtistsController < ApplicationController
     @today_posts = Post.where(published_at: Date.today..Date.today + 1.days, artist: @artist)
 
     stats_json = getstats(@artist)
+    
     @stats = statextract(stats_json)
+    raise
 
   end
 
@@ -27,8 +29,8 @@ class ArtistsController < ApplicationController
 
 
    def statextract(json)
-     result = json.map do |value|
-     [value["value"],value["end_time"]]
+     json.map do |value|
+       {x:value["end_time"], y:value["value"]}
      end
    end
 end
