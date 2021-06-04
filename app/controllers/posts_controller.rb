@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :schedule]
-  before_action :set_artist, only: [:new, :create, :edit]
+  before_action :set_artist, only: [:new, :create, :edit, :destroy]
 
   def index
     @posts = Post.all
@@ -27,6 +27,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    redirect_to artist_posts_path(@artist)
   end
 
   def update
@@ -37,6 +38,7 @@ class PostsController < ApplicationController
 
   def delete
     @post = Post.destroy
+    
   end
 
   def schedule
