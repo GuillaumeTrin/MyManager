@@ -14,24 +14,30 @@
 
     <div class="preview">
       <div class="header">
-        <%= cl_image_tag @artist.picture.key, class: "avatar" %>
+        <%= cl_image_tag @artist.picture.key, class: "avatar mr-3" %>
         <div class="text">
           <p> <%= @artist.name %> </p>
-          <p> date and time </p>
+          <div data-preview-target="previewDate" class="previewDate">
+          </div>
         </div>
-        <div data-preview-target="previewTitle">
-
+      </div>
+      <div data-preview-target="previewTitle" class="previewTitle">
+      </div>
+      <div data-preview-target="previewContent" class="previewContent">
+      </div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png" width="200" data-preview-target="previewImage" class="previewImage">
+      <div class="footer">
+        <div class="likes">
+          <img src="https://i.dlpng.com/static/png/6462747_preview.png" alt="like">
+          <img src="https://www.vectorico.com/wp-content/uploads/2018/02/Facebook-Heart.png" alt="heart">
+          <img src="https://freepngimg.com/download/facebook/65441-emoticon-like-button-haha-facebook-emoji.png" alt="haha">
+          <p>369</p>
         </div>
-         <div data-preview-target="previewContent">
-
-        </div>
-        <img src="https://images.vexels.com/media/users/3/131734/isolated/preview/05d86a9b63d1930d6298b27081ddc345-photo-preview-frame-icon-by-vexels.png" alt="toto" width="200" data-preview-target="previewImage">
-        <div data-preview-target="previewDate">
-
+        <div class="comments">
+          <p>150 comments</p>
+          <p>80 sharings</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
