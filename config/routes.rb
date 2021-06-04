@@ -8,9 +8,14 @@ Rails.application.routes.draw do
     resources :albums, only: [:index, :show, :new, :create]
   end
   devise_for :users
+
+  authenticated :user do 
+    root to: 'dashboards#dashboard', as: :root_authenticate
+  end
   root to: 'pages#home'
+
   get 'oauth2/connect', to: 'facebook#connect'
   get 'oauth2/callback', to: 'facebook#callback'
-  get '/dashboard', to: 'dashboards#dashboard'
+  # get '/dashboard', to: 'dashboards#dashboard'
   get '/disconnect', to: 'facebook#disconnect'
 end
