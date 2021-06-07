@@ -1,4 +1,5 @@
-<%= month_calendar(events: posts) do |date, posts| %>
+<div>
+   <%= month_calendar(events: posts) do |date, posts| %>
   <%= date.day %>
   <% posts.each do |post| %>
     <div>
@@ -41,7 +42,8 @@
       </div>
 
       </div>
-  <% end %>
+
+    </div>
 <% end %>
 
 

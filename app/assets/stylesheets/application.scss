@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -11,5 +13,10 @@
 
 // Your CSS partials
 @import "components/index";
+@import "components/navbar";
 @import "pages/index";
 @import "components/preview";
+
+body {
+  background-color: rgb(250, 250, 250);
+}
