@@ -4,21 +4,19 @@
 
 <hr>
 
-<h2>Planned Today <%= Date.today.strftime("%d/%m/%Y") %> </h2>
-<p>Here are the posts and events planned for today</p>
+<h2>Planned this week <%= Date.today.strftime("%d/%m/%Y") %> - <%= Date.today.next_week.strftime("%d/%m/%Y") %> </h2>
+<p>You have <%= @posts.current_week.select{ |p| !p.publishable? }.size %> posts to update</p>
 
-
-<ul>
-  <% @today_posts.each do |post| %>
-  <li>
-    <%= post.published_at.strftime("%H:%M") %>
-    <%= post.artist.name %>
-    <%= post.title %>
-    <%= post.content %>
-  </li>
-  <% end %>
-</ul>
-
+  <ul>
+    <% @posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
+    <li>
+      <%= post.published_at.strftime("%H:%M") %>
+      <%= post.artist.name %>
+      <%= post.title %>
+      <%= post.content %>
+    </li>
+    <% end %>
+  </ul>
 
 <h2> All your artists </h2>
 

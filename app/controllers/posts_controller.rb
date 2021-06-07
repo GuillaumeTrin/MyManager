@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :image, :published, :published_at)
+    params.require(:post).permit(:title, :content, :picture, :published, :published_at)
   end
 
   def set_artist
