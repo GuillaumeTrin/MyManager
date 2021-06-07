@@ -5,6 +5,11 @@ class DashboardsController < ApplicationController
     @artists = Artist.where(user: current_user)
     @posts = Post.where(artist: @artists)
     @today_posts = Post.where(published_at: Date.today..Date.today + 1.days)
+
+    stats_hash = Stat.group(:date).sum(:engagement)
+    @stats = stats_hash.map do |key, value|
+      { x: key.to_date, y: value }  
+    end
   end
 
   def home
