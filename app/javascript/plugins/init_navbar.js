@@ -11,7 +11,7 @@ if(toggle && nav && bodypd && headerpd){
 toggle.addEventListener('click', ()=>{
   console.log("coucou")
 // show navbar
-nav.classList.toggle('show')
+nav.classList.toggle('navbar-show')
 // change icon
 toggle.classList.toggle('bx-x')
 // add padding to body

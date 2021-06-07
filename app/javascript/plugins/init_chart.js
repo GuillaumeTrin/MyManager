@@ -6,6 +6,9 @@ const initChart = () => {
     return
     const data_element = JSON.parse(ctx.dataset.stats);
    
+    if (!ctx)
+      return
+
     const data = {
       
         datasets: [{
