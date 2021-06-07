@@ -54,7 +54,7 @@ class FacebookController < ApplicationController
       artist = Artist.new(name: name, id_facebook: id, facebook_access_token: access_token)
       artist.picture.attach(io: img_file, filename: "#{name}pic.png", content_type: 'image/png')
       artist.user = current_user
-      artist.save!
+      artist.save
     end
   end
 end
