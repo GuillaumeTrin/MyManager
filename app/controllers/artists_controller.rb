@@ -8,9 +8,6 @@ class ArtistsController < ApplicationController
 
     array_json = getstats(@artist)
     @stats = statextract(array_json)
-    
-
-
   end
 
   def index
@@ -22,16 +19,17 @@ class ArtistsController < ApplicationController
   def getstats(artist)
     client = OAuth2::Client.new(ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], site: 'https://graph.facebook.com', token_url: "/oauth/access_token")
     token = OAuth2::AccessToken.new(client,artist.facebook_access_token)
-    response = token.get("#{artist.id_facebook}/insights/page_post_engagements")
+    now = Date.today
+    a_week_ago = (now - 7)
+    response = token.get("#{artist.id_facebook}/insights/page_post_engagements/?since=#{a_week_ago}")
+
     json = JSON.parse(response.body)
     json["data"][1]["values"]
-
   end
 
-
-   def statextract(array)
-     array.map do |json|
-       {x:json["end_time"], y:json["value"]}
-     end
-   end
+  def statextract(array)
+    array.map do |json|
+      { x: json["end_time"].to_date, y: json["value"] }
+    end
+  end
 end
