@@ -36,9 +36,15 @@ class PostsController < ApplicationController
     redirect_to artist_path(@post.artist)
   end
 
+
+  def delete
+    @post = Post.destroy
+  end
+
   # def delete
   #   @post = Post.destroy
   # end
+
 
   def schedule
     if @post.published_at
@@ -61,7 +67,7 @@ class PostsController < ApplicationController
   end
 
   def schedule_post(post)
-    job_id = PostToFacebookJob.set(wait_until: post.published_at).perform_later(post.id)
+    job_id = PostToFacebookJob.set(wait_until: post.published_at - 2.hours).perform_later(post.id)
     post.job_id = job_id.provider_job_id
     post.save
   end
