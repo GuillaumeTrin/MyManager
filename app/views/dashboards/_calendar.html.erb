@@ -28,7 +28,7 @@
                   <%= render "/dashboards/post_preview", post:post %>
                 </div>
                 <div class="column right">   
-                  <%= link_to "Destroy this post", post_path(post), method: :delete,  class: 'link-delete', role: "button", class: "btn btn-danger", title: "Popover title", datacontent: "Popover body content is set in this attribute.", confirm: "Are you sure?" %>
+                  <%= link_to "Destroy this post", post_path(post), method: :delete,  class: 'link-delete', role: "button", class: "btn btn-danger", title: "Popover title", datacontent: "Popover body content is set in this attribute.", data: {confirm: "Are you sure?"} %>
                   
                   <%= link_to "Edit", edit_artist_post_path(post.artist_id, post.id), role: "button", class: "btn btn-info popover-test", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
                 </div>
