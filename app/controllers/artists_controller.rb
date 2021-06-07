@@ -5,9 +5,10 @@ class ArtistsController < ApplicationController
     @posts = Post.where(published_at: start_date..Date.current, artist: @artist)
 
     @today_posts = Post.where(published_at: Date.today..Date.today + 1.days, artist: @artist)
-    if havestats
+    if havestats(@artist)
       db_stats_array = @artist.stats.where('date > ?', DateTime.now - 7).to_a
       @stats = db_stat_extract(db_stats_array)
+
     else
       array_json = get_fb_stats(@artist)
       @stats = fb_stat_extract(array_json, @artist)
@@ -20,9 +21,11 @@ class ArtistsController < ApplicationController
 
   private
 
-  def havestats
-    latest_date = Artist.first.stats.order('date desc').limit(1).to_a[0].date
-    return Date.today > latest_date
+  def havestats(artist)
+    latest_date = artist.stats.order('date desc').limit(1).to_a[0]
+    return false if latest_date.nil?
+
+    return Date.today > latest_date.date
   end
 
   def get_fb_stats(artist)
