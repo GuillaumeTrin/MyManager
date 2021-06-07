@@ -33,7 +33,4 @@ class ArtistsController < ApplicationController
       { x: json["end_time"].to_date, y: json["value"] }
     end
   end
-
-
-
 end
