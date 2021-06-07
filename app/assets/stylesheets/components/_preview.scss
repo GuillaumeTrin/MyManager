@@ -3,8 +3,8 @@
   background-color: white;
   width: 500px;
   padding: 10px;
-  border-radius: 4px;
-  border: 1px solid rgb(200, 200, 200);
+  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .header {
@@ -65,3 +65,4 @@
   display: flex;
   justify-content: space-between;
 }
+

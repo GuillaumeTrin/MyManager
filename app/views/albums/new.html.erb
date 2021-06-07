@@ -1,7 +1,11 @@
-<h1> Plan the release of an album </h1>
+<div class="container login-container title">
+  <h1> Plan the release of an album </h1>
 
-  <%= simple_form_for([@artist, @album]) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :out_at %>
-    <%= f.submit  %>
-  <% end %>
+  <div class="create-album-form">
+    <%= simple_form_for([@artist, @album]) do |f| %>
+      <%= f.input :name, :label => "Enter the name of your album" %>
+      <%= f.input :out_at, html5: true, :label => "Choose a release date" %>
+      <%= f.submit "Next", class: "btn btn-primary create-album-button" %>
+    <% end %>
+  </div>
+</div>
