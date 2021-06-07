@@ -1,0 +1,43 @@
+.create-album-form {
+  background-color: white;
+  padding: 56px;
+  width: 50%;
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.create-album-form label {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+}
+
+.create-album-form input {
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.create-album-form input:focus {
+  outline: none !important;
+  box-shadow: 0 0 10px #ff5532;
+}
+
+.create-album-button {
+  background-color: #ff5532;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-top: 16px;
+  align-self: flex-end;
+}
+
+.create-album-button:hover {
+  background-color: white;
+  border: 1px solid #ff5532;
+  color: #ff5532;
+}

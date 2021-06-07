@@ -1,0 +1,31 @@
+<div class="preview">
+      <div class="header">
+        <%= cl_image_tag post.artist.picture.key, class: "avatar mr-3" %>
+        <div class="text">
+          <p> <%= post.artist.name %> </p>
+        </div>
+      </div>
+      <div class="date"> 
+        <%= post.published_at.strftime("Printed on %m/%d/%Y/%I:%M%p") %>
+      </div>
+      <div > 
+        <%= post.title %>
+      </div>
+      <div >
+        <%= post.content %>
+      </div>
+       <%= cl_image_tag post.picture.key, width: 200 %>
+      <div class="footer">
+        <div class="likes">
+          <img src="https://i.dlpng.com/static/png/6462747_preview.png" alt="like">
+          <img src="https://www.vectorico.com/wp-content/uploads/2018/02/Facebook-Heart.png" alt="heart">
+          <img src="https://freepngimg.com/download/facebook/65441-emoticon-like-button-haha-facebook-emoji.png" alt="haha">
+          <p>369</p>
+        </div>
+        <div class="comments">
+          <p>150 comments</p>
+          <p>80 sharings</p>
+        </div>
+      </div>
+    </div>
+  </div>

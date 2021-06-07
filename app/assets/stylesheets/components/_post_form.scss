@@ -1,0 +1,70 @@
+.title h1 {
+  text-align: center;
+  padding: 32px;
+  color: #ff5532;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: bold;
+}
+
+.form-inputs label {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+}
+
+.form-inputs input {
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.form-inputs input:focus {
+  outline: none !important;
+  box-shadow: 0 0 10px #ff5532;
+}
+
+.form-inputs textarea {
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.form-inputs textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 10px #ff5532;
+}
+
+.create-button {
+  background-color: #ff5532;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.create-button:hover {
+  background-color: white;
+  border: 1px solid #ff5532;
+  color: #ff5532;
+}
+
+.upload-button {
+  background-color: white;
+  border: 1px solid #ff5532;
+  color: #ff5532;
+  border-radius: 8px;
+}
+
+.upload-button:hover {
+  background-color: #ff5532;
+  color: white;
+  border: 1px solid #ff5532;
+}
+
+.new-post-form {
+  display: flex;
+  align-items: center;
+  width: 60%;
+
+  form {
+    width: 80%;
+  }
+}

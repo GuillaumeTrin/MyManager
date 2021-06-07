@@ -21,6 +21,7 @@ class FacebookController < ApplicationController
     client = OAuth2::Client.new(ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], site: 'https://graph.facebook.com', token_url: "/oauth/access_token")
     auth_code = params[:code]
     token = client.auth_code.get_token(auth_code, redirect_uri: "#{ENV['CALLBACK_URL']}/oauth2/callback", headers: {'Authorization' => 'Basic some_password'})
+    
     current_user.facebook_access_token = token
     current_user.save
     response = token.get('/me/accounts')
