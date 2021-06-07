@@ -10,18 +10,18 @@
 <hr>
 
 
-<h2>Planned Today <%= Date.today.strftime("%d/%m/%Y") %> </h2>
-<p>Here are the posts and events planned for <%= @artist.name %> today</p>
+<h2>Planned this week <%= Date.today.strftime("%d/%m/%Y") %> - <%= Date.today.next_week.strftime("%d/%m/%Y") %> </h2>
+<p>You have <%= @artist.posts.current_week.select{ |p| !p.publishable? }.size %> posts to update for <%= @artist.name %> this week</p>
 
-<ul>
-  <% @today_posts.each do |post| %>
-  <li>
-    <%= post.published_at.strftime("%H:%M") %>
-    <%= post.title %>
-    <%= post.content %>
-  </li>
-  <% end %>
-</ul>
+  <ul>
+    <% @artist.posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
+    <li>
+      <%= post.published_at.strftime("%H:%M") %>
+      <%= post.title %>
+      <%= post.content %>
+    </li>
+    <% end %>
+  </ul>
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -41,13 +41,13 @@
       </div>
       <div class="modal-body">
 
-      <%= link_to "Plannifier la sortie d'un album", new_artist_album_url(@artist), role: "button", class: "btn btn-info popover-test", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>     
+      <%= link_to "Plannifier la sortie d'un album", new_artist_album_url(@artist), role: "button", class: "btn btn-info popover-test", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
       </a>
-      
-      
-      <%= link_to "Plannifier un post", new_artist_post_url(@artist), role: "button", class: "btn btn-info popover-test", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>     
+
+
+      <%= link_to "Plannifier un post", new_artist_post_url(@artist), role: "button", class: "btn btn-info popover-test", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
       </a>
-      
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -56,7 +56,7 @@
   </div>
 </div>
 
- 
+
 
 
 
