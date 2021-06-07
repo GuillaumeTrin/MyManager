@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :albums, only: [:index, :show, :new, :create]
   end
+  resources :posts, only: [:destroy]
   devise_for :users
 
   authenticated :user do 

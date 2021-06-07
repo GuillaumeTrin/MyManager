@@ -3,6 +3,9 @@ import { Chart, registerables } from 'chart.js';
 const initChart = () => {
     const ctx = document.getElementById('myChart');
    
+    if (!ctx)
+      return
+
     const data = {
       
         datasets: [{
