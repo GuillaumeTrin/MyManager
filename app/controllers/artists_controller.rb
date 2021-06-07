@@ -8,6 +8,7 @@ class ArtistsController < ApplicationController
     
     array_json = getstats(@artist)
     @stats = statextract(array_json)
+
   end
 
   def index
@@ -32,4 +33,7 @@ class ArtistsController < ApplicationController
       { x: json["end_time"].to_date, y: json["value"] }
     end
   end
+
+
+
 end
