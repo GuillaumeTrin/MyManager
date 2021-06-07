@@ -6,10 +6,10 @@ class ArtistsController < ApplicationController
 
     @today_posts = Post.where(published_at: Date.today..Date.today + 1.days, artist: @artist)
 
-    stats_json = getstats(@artist)
+    array_json = getstats(@artist)
+    @stats = statextract(array_json)
     
-    @stats = statextract(stats_json)
-    raise
+
 
   end
 
@@ -25,12 +25,13 @@ class ArtistsController < ApplicationController
     response = token.get("#{artist.id_facebook}/insights/page_post_engagements")
     json = JSON.parse(response.body)
     json["data"][1]["values"]
+
   end
 
 
-   def statextract(json)
-     json.map do |value|
-       {x:value["end_time"], y:value["value"]}
+   def statextract(array)
+     array.map do |json|
+       {x:json["end_time"], y:json["value"]}
      end
    end
 end
