@@ -14,7 +14,9 @@
       <div >
         <%= post.content %>
       </div>
-       <%= cl_image_tag post.picture.key, width: 200 %>
+        <% if post.picture.attached? %>
+          <%= cl_image_tag post.picture.key, width: 200 %>
+        <% end %>
       <div class="footer">
         <div class="likes">
           <img src="https://i.dlpng.com/static/png/6462747_preview.png" alt="like">
