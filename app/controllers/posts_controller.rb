@@ -38,7 +38,6 @@ class PostsController < ApplicationController
 
   def delete
     @post = Post.destroy
-    
   end
 
   def schedule
