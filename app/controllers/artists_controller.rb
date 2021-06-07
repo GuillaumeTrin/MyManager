@@ -6,11 +6,11 @@ class ArtistsController < ApplicationController
 
     @today_posts = Post.where(published_at: Date.today..Date.today + 1.days, artist: @artist)
     if havestats
-      db_stats = @artist.stats.where(':date > Date.today - 7')
-      raise
+      db_stats_array = @artist.stats.where('date > ?', DateTime.now - 7).to_a
+      @stats = db_stat_extract(db_stats_array)
     else
       array_json = get_fb_stats(@artist)
-      @stats = statextract(array_json, @artist)
+      @stats = fb_stat_extract(array_json, @artist)
     end
   end
 
@@ -35,12 +35,18 @@ class ArtistsController < ApplicationController
     json["data"][1]["values"]
   end
 
-  def statextract(array,artist)
+  def fb_stat_extract(array,artist)
     array.map do |json|
       stat = Stat.new(date:json["end_time"].to_date,engagement:json["value"])
       stat.artist = artist
       stat.save!
       { x: json["end_time"].to_date, y: json["value"] }
+    end
+  end
+
+  def db_stat_extract(db_stats_array)
+    db_stats_array.map do |stat|
+      {x: stat.date, y: stat.engagement}
     end
   end
 end
