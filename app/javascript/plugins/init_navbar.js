@@ -1,14 +1,15 @@
-document.addEventListener("DOMContentLoaded", function(event) {
 
+const initNavbar = () => {
 const showNavbar = (toggleId, navId, bodyId, headerId) =>{
 const toggle = document.getElementById(toggleId),
 nav = document.getElementById(navId),
 bodypd = document.getElementById(bodyId),
 headerpd = document.getElementById(headerId)
-
+console.log(nav);
 // Validate that all variables exist
 if(toggle && nav && bodypd && headerpd){
 toggle.addEventListener('click', ()=>{
+  console.log("coucou")
 // show navbar
 nav.classList.toggle('show')
 // change icon
@@ -33,6 +34,6 @@ this.classList.add('active')
 }
 }
 linkColor.forEach(l=> l.addEventListener('click', colorLink))
+}
 
-// Your code to run since DOM is loaded and ready
-});
+export { initNavbar }
