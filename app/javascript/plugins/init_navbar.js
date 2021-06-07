@@ -5,7 +5,7 @@ const toggle = document.getElementById(toggleId),
 nav = document.getElementById(navId),
 bodypd = document.getElementById(bodyId),
 headerpd = document.getElementById(headerId)
-console.log(nav);
+
 // Validate that all variables exist
 if(toggle && nav && bodypd && headerpd){
 toggle.addEventListener('click', ()=>{

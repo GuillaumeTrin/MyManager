@@ -1,48 +1,58 @@
 <h1>Albums#show</h1>
 
-<% if @generated_posts %>
-  <% @generated_posts.each do |post| %>
-    <div data-controller="preview">
-          <%= simple_form_for([@album.artist, post]) do |f| %>
-            <div class="form-inputs">
-              <%= f.input :title, input_html: { "data-preview-target": "title", "data-action": "input->preview#gettitle" } %>
-              <%= f.input :content, input_html: { "data-preview-target": "content", "data-action": "input->preview#getcontent" } %>
-              <%= f.input :picture, as: :file, input_html: { "data-preview-target": "image", "data-action": "change->preview#getimage" } %>
-              <%= f.input :published_at, html5: true, input_html: { "data-preview-target": "date", "data-action": "change->preview#getdate" }%>
-              <%= f.submit %>
-          <% end %>
-            </div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <% @generated_posts.each_with_index do |post, i| %>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link <%= 'active' if i == 0%>" id="post-<%= i %>-tab" data-toggle="tab" href="#post-<%= i %>" ><%= l post.published_at.to_date, format: :short %></a>
+    </li>
+  <% end %>
+</ul>
 
-        <div class="preview">
-          <div class="header-preview">
-            <%= cl_image_tag @album.artist.picture.key, class: "avatar mr-3" %>
-            <div class="text">
-              <p> <%= @album.artist.name %> </p>
-              <div data-preview-target="previewDate" class="previewDate">
+<div class="tab-content" id="myTabContent">
+  <% @generated_posts.each_with_index do |post, i| %>
+    <div class="tab-pane fade <%= 'show active' if i == 0%>" id="post-<%= i %>" role="tabpanel">
+      <div class="container" data-controller="preview">
+            <%= simple_form_for([@album.artist, post]) do |f| %>
+              <div class="form-inputs">
+                <%= f.input :title, input_html: { "data-preview-target": "title", "data-action": "input->preview#gettitle" } %>
+                <%= f.input :content, input_html: { "data-preview-target": "content", "data-action": "input->preview#getcontent" } %>
+                <%= f.input :picture, as: :file, input_html: { "data-preview-target": "image", "data-action": "change->preview#getimage" } %>
+                <%= f.input :published_at, html5: true, input_html: { "data-preview-target": "date", "data-action": "change->preview#getdate" }%>
+                <%= f.submit %>
+            <% end %>
+              </div>
+
+          <div class="preview">
+            <div class="header-preview">
+              <%= cl_image_tag @album.artist.picture.key, class: "avatar mr-3" %>
+              <div class="text">
+                <p> <%= @album.artist.name %> </p>
+                <div data-preview-target="previewDate" class="previewDate">
+                </div>
+              </div>
+            </div>
+            <div data-preview-target="previewTitle" class="previewTitle">
+            </div>
+            <div data-preview-target="previewContent" class="previewContent">
+            </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png" width="200" data-preview-target="previewImage" class="previewImage">
+            <div class="footer">
+              <div class="likes">
+                <img src="https://i.dlpng.com/static/png/6462747_preview.png" alt="like">
+                <img src="https://www.vectorico.com/wp-content/uploads/2018/02/Facebook-Heart.png" alt="heart">
+                <img src="https://freepngimg.com/download/facebook/65441-emoticon-like-button-haha-facebook-emoji.png" alt="haha">
+                <p>369</p>
+              </div>
+              <div class="comments">
+                <p>150 comments</p>
+                <p>80 sharings</p>
               </div>
             </div>
           </div>
-          <div data-preview-target="previewTitle" class="previewTitle">
-          </div>
-          <div data-preview-target="previewContent" class="previewContent">
-          </div>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png" width="200" data-preview-target="previewImage" class="previewImage">
-          <div class="footer">
-            <div class="likes">
-              <img src="https://i.dlpng.com/static/png/6462747_preview.png" alt="like">
-              <img src="https://www.vectorico.com/wp-content/uploads/2018/02/Facebook-Heart.png" alt="heart">
-              <img src="https://freepngimg.com/download/facebook/65441-emoticon-like-button-haha-facebook-emoji.png" alt="haha">
-              <p>369</p>
-            </div>
-            <div class="comments">
-              <p>150 comments</p>
-              <p>80 sharings</p>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
   <% end %>
-<% end %>
+</div>
+
 
 <%= link_to "Validate my content",  artist_path(@album.artist) %>
