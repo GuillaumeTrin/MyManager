@@ -1,52 +1,53 @@
 <div class="marge_base">
-  <h2> All your artists </h2>
 
-  <div class="card_position">
-    <% @artists.each do |artist| %>
-      <div class="card_artist">
-        <div class="artist_name">
-          <%= link_to artist.name, artist_path(artist) %>
+  <div class="card_banner_artist">
+    <div class="title">
+      <h2><strong> All your artists</strong> </h2>
+    </div>
+    <div class="card_position">
+      <% @artists.each do |artist| %>
+        <div class="card_artist">
+          <div class="artist_name">
+            <%= link_to artist.name, artist_path(artist) %>
+          </div>
+          <div class="pic_artist"> 
+            <%= link_to artist_path(artist) do %>
+              <%= cl_image_tag artist.picture.key%>
+            <% end %>
+          </div>
         </div>
-        <div class="pic_artist"> 
-          <%= link_to artist_path(artist) do %>
-            <%= cl_image_tag artist.picture.key%>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
+ 
   
   <h2>Your planning this month</h2>
     <div class="display_cenlendar_planned"> 
-      <div class="calendar_display">
-        <%= render 'calendar', posts: @posts, only_artist: false %>
-        <hr>
-      </div>
       <div class="card_planned_display">
         <div class="planned_title"> 
-          <h3>Planned this week </h3>
-            
+          <h3><strong>Planned this week</strong> </h3>
         </div>
-        <h4>
-        <%= Date.today.strftime("%d/%m/%Y") %> <br>
-        -----
-        <p> <%= Date.today.next_week.strftime("%d/%m/%Y") %>  </p>
-        </h4>
-       
-      <p>You have <strong> <%= @posts.current_week.select{ |p| !p.publishable? }.size %> posts</strong> to update</p>
+          <h4><%= Date.today.strftime("%d/%m/%Y") %> <br>
+          -----
+         <p> <%= Date.today.next_week.strftime("%d/%m/%Y") %>  </p></h4>      
+         <p>You have <strong> <%= @posts.current_week.select{ |p| !p.publishable? }.size %> posts</strong> to update</p>
 
         <ul>
           <% @posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
           <li>
-           <strong> <%= post.published_at.strftime("%H:%M") %> </strong>
-           <strong>  <%= post.artist.name %> </strong>
+          <strong> <%= post.published_at.strftime("%H:%M") %> </strong>
+          <strong>  <%= post.artist.name %> </strong>
             <%= post.title %>
             <%= post.content %>
           </li>
           <% end %>
         </ul>
       </div>
-    </div>
+      <div class="calendar_display">
+        <%= render 'calendar', posts: @posts, only_artist: false %>
+        <hr>
+      </div>
+     </div>
 
   <hr>
 
