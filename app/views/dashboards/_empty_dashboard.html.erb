@@ -1,5 +1,11 @@
-<h3> Please connect your Facebook account </h3>
+<div class="home-bg">
+  <div class="container login-container">
+  <h1> The Major Platform To Manage Your Community</h1>
 
-<%= link_to 'Connect my account', oauth2_connect_path %>
-
-
+  <h3> Please connect your Facebook account </h3>
+     <%= link_to oauth2_connect_path, class: "facebook_button" do %>
+  <i class="fab fa-facebook"></i>
+  Connect my account
+<% end %>
+  </div>
+</div>
