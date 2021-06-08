@@ -6,6 +6,7 @@ class DashboardsController < ApplicationController
     @posts = Post.where(artist: @artists)
     @today_posts = Post.where(published_at: Date.today..Date.today + 1.days)
     @stats = all_artist_stats
+    @hide_navbar = true if current_user.facebook_access_token.blank?
   end
 
   def home
