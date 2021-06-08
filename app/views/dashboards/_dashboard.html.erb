@@ -1,30 +1,4 @@
-<div class="container">
-  <h2>Your planning this month</h2>
-    <div class="display_cenlendar_planned"> 
-      <div class="calendar_display">
-        <%= render 'calendar', posts: @posts, only_artist: false %>
-        <hr>
-      </div>
-      <div class="planned_display">
-          <h3>Planned this week 
-          <p> 
-            <%= Date.today.strftime("%d/%m/%Y") %> - <%= Date.today.next_week.strftime("%d/%m/%Y") %> 
-          </p>
-          </h3>
-      <p>You have <%= @posts.current_week.select{ |p| !p.publishable? }.size %> posts to update</p>
-
-        <ul>
-          <% @posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
-          <li>
-            <%= post.published_at.strftime("%H:%M") %>
-            <%= post.artist.name %>
-            <%= post.title %>
-            <%= post.content %>
-          </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
+<div class="marge_base">
   <h2> All your artists </h2>
 
   <div class="card_position">
@@ -41,6 +15,39 @@
       </div>
     <% end %>
   </div>
+  
+  <h2>Your planning this month</h2>
+    <div class="display_cenlendar_planned"> 
+      <div class="calendar_display">
+        <%= render 'calendar', posts: @posts, only_artist: false %>
+        <hr>
+      </div>
+      <div class="card_planned_display">
+        <div class="planned_title"> 
+          <h3>Planned this week </h3>
+            
+        </div>
+        <h4>
+        <%= Date.today.strftime("%d/%m/%Y") %> <br>
+        -----
+        <p> <%= Date.today.next_week.strftime("%d/%m/%Y") %>  </p>
+        </h4>
+       
+      <p>You have <strong> <%= @posts.current_week.select{ |p| !p.publishable? }.size %> posts</strong> to update</p>
+
+        <ul>
+          <% @posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
+          <li>
+           <strong> <%= post.published_at.strftime("%H:%M") %> </strong>
+           <strong>  <%= post.artist.name %> </strong>
+            <%= post.title %>
+            <%= post.content %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
   <hr>
 
 
