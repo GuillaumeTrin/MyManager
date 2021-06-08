@@ -1,0 +1,28 @@
+.nav-link {
+  color: #ff5532 !important;
+
+  &:hover {
+    color: #343f56 !important;
+  }
+}
+
+.validate-button {
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background-color: #ff5532;
+  font-family: 'Noto Sans KR', sans-serif;
+  position: absolute;
+  right: 0px;
+
+  &:hover {
+    background-color: white;
+    border: 1px solid #ff5532;
+    color: #ff5532;
+  }
+}
+
+.nav-tabs {
+  position: relative;
+}

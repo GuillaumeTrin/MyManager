@@ -14,6 +14,19 @@
         </div>
       </div>
     <% end %>
+
+<h2> All your artists </h2>
+
+<div class="card_position">
+  <% @artists.each do |artist| %>
+    <div class="card_artist">
+      <div class="artist_name">
+        <%= link_to artist.name, artist_path(artist) %>
+      </div>
+      <div class="pic_artist">
+        <%= link_to artist_path(artist) do %>
+          <%= cl_image_tag artist.picture.key%>
+        <% end %>
   </div>
   
   <h2>Your planning this month</h2>
@@ -55,6 +68,18 @@
 <div>
   <canvas class="w-100" id="myGlobalChart" data-stats="<%= @stats.to_json %>" data-artists="<%= @array_artists %>"></canvas>
 </div>
+<hr>
+
+<h2> Your planned album campaigns </h2>
+  <ul>
+    <% @albums.each do |album| %>
+        <li>
+          <%= link_to album.name, artist_album_path(album.artist, album) %>
+          <%= album.artist.name %>
+        </li>
+    <% end %>
+  </ul>
+
 <hr>
 
 

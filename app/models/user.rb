@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :artists
+  has_many :albums, through: :artists
   has_many :posts, through: :artists
   has_one_attached :avatar
 end
