@@ -48,8 +48,9 @@ class FacebookController < ApplicationController
   def create_artists(artists, token)
     artists.each do |artist|
       name = artist["name"]
-      find_artist = Artist.find_by name: name
-      next unless find_artist.nil?
+      found_artist = Artist.find_by name: name
+      next unless found_artist.nil?
+      next if found_artist&.user_id == current_user.id
 
       id = artist["id"]
       picture_url = get_picture(token, id)
