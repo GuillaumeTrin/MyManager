@@ -7,6 +7,7 @@
   height: 100vh;
   position: sticky;
   top: 0;
+  transition: all 0.3s ease-in-out;
 
   .sidebar-header {
     padding: 2px;
@@ -33,13 +34,41 @@
     a {
       padding: 20px;
       text-decoration: none;
-      color: rgb(230, 230, 230);
+      color: rgb(235, 235, 235);
+      font-size: 18px;
 
-      &:hover {color: white;}
+      &:hover {
+        color: white;
+        font-size: 20px;
+      }
     }
 
     i {
       width: 24px;
+      font-size: 20px;
+    }
+
+    span {
+      display: none;
+    }
+  }
+
+  .sidebar-footer {
+    i {
+      width: 24px;
+      margin-bottom: 24px;
+    }
+
+    a {
+      padding: 20px;
+      text-decoration: none;
+      color: rgb(235, 235, 235);
+      font-size: 18px;
+
+      &:hover {
+        color: white;
+        font-size: 20px;
+      }
     }
 
     span {
@@ -76,11 +105,12 @@
 
 
   .sidebar-footer {
-    padding: 20px;
-    text-align: center;
+    span {
+      display: inline;
+    }
 
-    a {
-      color: #AFA5D9;
+     i {
+      margin-right: 10px;
     }
   }
 }
