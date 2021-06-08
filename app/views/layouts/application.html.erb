@@ -13,12 +13,16 @@
   </head>
 
   <body>
-    <%= render 'shared/sidebar' %>
+   <% unless current_user&.facebook_access_token.blank? %>
+    <%= render 'shared/navbar' %>
+    <% end %>
     <div class="main-container">
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
       <%= yield %>
+
     </div>
+
   </body>
 </html>
 

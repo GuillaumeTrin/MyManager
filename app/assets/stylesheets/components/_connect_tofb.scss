@@ -1,0 +1,17 @@
+.home-bg {
+  background-color: #FF5532;
+  background-repeat: no-repeat;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-container h3, h1 {
+  font-family: 'Gotham', sans-serif;
+  color: white
+}
