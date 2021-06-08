@@ -1,57 +1,42 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logomymanager.png" %>
-  <% end %>
-
-<body id="body-pd">
-    <header class="header" id="header">
-        <div class="header_toggle">
-          <div type="button" id="header-toggle" class="fas fa-bars"></div>
-        </div>
-        <div class="header_img">
-          <img src="https://i.imgur.com/hczKIze.jpg" alt="">
-        </div>
-    </header>
-    <div class="l-navbar" id="nav-bar">
-        <nav class="nav">
-            <div>
-              <a href="#" class="nav_logo">
-                <i class='bx bx-layer nav_logo-icon'></i>
-                <span class="nav_logo-name">MyManager</span>
-              </a>
-                <div class="nav_list">
-                  <a href="#" class="nav_link active">
-                    <i class="fas fa-home"></i>
-                    <span class="nav_name">Dashboard</span>
-                  </a>
-                  <a href="#" class="nav_link">
-                    <i class="fas fa-user"></i>
-                    <span class="nav_name">Users</span>
-                  </a>
-                  <a href="#" class="nav_link">
-                    <i class="far fa-envelope"></i>
-                    <span class="nav_name">Messages</span>
-                  </a>
-                  <a href="#" class="nav_link">
-                    <i class="far fa-bookmark"></i>
-                    <span class="nav_name">Bookmark</span>
-                  </a>
-                  <a href="#" class="nav_link">
-                    <i class="far fa-file"></i>
-                    <span class="nav_name">Files</span>
-                  </a>
-                  <a href="#" class="nav_link">
-                    <i class="fas fa-signal"></i>
-                    <span class="nav_name">Stats</span>
-                  </a>
-                </div>
-            </div>
-            <a href="#" class="nav_link">
-              <i class="fas fa-sign-out-alt"></i>
-              <span class="nav_name">SignOut</span>
-            </a>
-        </nav>
-    </div>
-
-
-
+<div class="sidebar sidebar-default">
+  <div class="sidebar-header">
+    <%= link_to root_path, class: "sidebar-img" do %>
+      <%= image_tag "logomymanager.png" %>
+    <% end %>
+    <%= link_to root_path, class: "sidebar-img-expand" do %>
+      <%= image_tag "logomymanager.png" %>
+    <% end %>
+  </div>
+  <div class="sidebar-items">
+    <a href="#" class="nav_link active">
+      <i class="fas fa-home"></i>
+      <span class="nav_name">Dashboard</span>
+    </a>
+    <a href="#" class="nav_link">
+      <i class="fas fa-user"></i>
+      <span class="nav_name">Users</span>
+    </a>
+    <a href="#" class="nav_link">
+      <i class="far fa-envelope"></i>
+      <span class="nav_name">Messages</span>
+    </a>
+    <a href="#" class="nav_link">
+      <i class="far fa-bookmark"></i>
+      <span class="nav_name">Bookmark</span>
+    </a>
+    <a href="#" class="nav_link">
+      <i class="far fa-file"></i>
+      <span class="nav_name">Files</span>
+    </a>
+    <a href="#" class="nav_link">
+      <i class="fas fa-signal"></i>
+      <span class="nav_name">Stats</span>
+    </a>
+  </div>
+  <div class="sidebar-footer">
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="fas fa-sign-out-alt"></i>
+      <span class="nav_name">SignOut</span>
+    <% end %>
+  </div>
+</div>
