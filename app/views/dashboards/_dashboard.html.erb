@@ -51,11 +51,12 @@
   <hr>
 
 
-  <h2> Latest stats </h2>
-  <div>
-    <canvas class="w-100" id="myChart" data-stats="<%= @stats.to_json %>"></canvas>
-  </div>
-  <hr>
+<h2> Latest stats </h2>
+<div>
+  <canvas class="w-100" id="myGlobalChart" data-stats="<%= @stats.to_json %>" data-artists="<%= @array_artists %>"></canvas>
+</div>
+<hr>
+
 
   <%= link_to 'Disconnect Facebook', disconnect_path %>
 
