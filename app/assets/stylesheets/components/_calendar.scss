@@ -1,0 +1,41 @@
+.display_cenlendar_planned {
+  display: flex;
+  align-items: flex-start;
+  align-items: center;
+}
+
+.calendar_display {
+  width: 100%;
+}
+
+.card_planned_display {
+  justify-content: space-between;
+  margin: 24px 16px 24px 16px;
+  padding: 12px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.planned_title {
+  color: #ff5532;
+  font-weight: bold;
+  text-align: center;
+}
+
+.fas.fa-check-circle {
+  color: green;
+}
+
+.fas.fa-times-circle {
+  color: red;
+}
+
+.size_post {
+  font-size: 12px;
+}
