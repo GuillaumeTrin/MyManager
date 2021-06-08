@@ -7,6 +7,8 @@ class DashboardsController < ApplicationController
     @albums = current_user.albums
     @today_posts = @posts.where(published_at: Date.today..Date.today + 1.days)
     @stats = all_artist_stats
+    @array_artists = @artists.map(&:id)
+    @hide_navbar = true if current_user.facebook_access_token.blank?
   end
 
   def home
@@ -17,7 +19,7 @@ class DashboardsController < ApplicationController
   private
 
   def all_artist_stats
-    stats_hash = Stat.group(:date).sum(:engagement)
+    stats_hash = Stat.order(date: :asc).group(:date).sum(:engagement)
     stats_hash.map do |key, value|
       { x: key.to_date, y: value }
     end

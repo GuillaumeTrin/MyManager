@@ -1,23 +1,73 @@
-<h2>Your planning this month</h2>
+<div class="marge_base">
+  <h2> All your artists </h2>
 
-<%= render 'calendar', posts: @posts, only_artist: false %>
-
-<hr>
-
-<h2>Planned this week <%= Date.today.strftime("%d/%m/%Y") %> - <%= Date.today.next_week.strftime("%d/%m/%Y") %> </h2>
-<p>You have <%= @posts.current_week.select{ |p| !p.publishable? }.size %> posts to update</p>
-
-  <ul>
-    <% @posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
-    <li>
-      <%= post.published_at.strftime("%H:%M") %>
-      <%= post.artist.name %>
-      <%= post.title %>
-      <%= post.content %>
-    </li>
+  <div class="card_position">
+    <% @artists.each do |artist| %>
+      <div class="card_artist">
+        <div class="artist_name">
+          <%= link_to artist.name, artist_path(artist) %>
+        </div>
+        <div class="pic_artist"> 
+          <%= link_to artist_path(artist) do %>
+            <%= cl_image_tag artist.picture.key%>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  </ul>
 
+<h2> All your artists </h2>
+
+<div class="card_position">
+  <% @artists.each do |artist| %>
+    <div class="card_artist">
+      <div class="artist_name">
+        <%= link_to artist.name, artist_path(artist) %>
+      </div>
+      <div class="pic_artist">
+        <%= link_to artist_path(artist) do %>
+          <%= cl_image_tag artist.picture.key%>
+        <% end %>
+  </div>
+  
+  <h2>Your planning this month</h2>
+    <div class="display_cenlendar_planned"> 
+      <div class="calendar_display">
+        <%= render 'calendar', posts: @posts, only_artist: false %>
+        <hr>
+      </div>
+      <div class="card_planned_display">
+        <div class="planned_title"> 
+          <h3>Planned this week </h3>
+            
+        </div>
+        <h4>
+        <%= Date.today.strftime("%d/%m/%Y") %> <br>
+        -----
+        <p> <%= Date.today.next_week.strftime("%d/%m/%Y") %>  </p>
+        </h4>
+       
+      <p>You have <strong> <%= @posts.current_week.select{ |p| !p.publishable? }.size %> posts</strong> to update</p>
+
+        <ul>
+          <% @posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
+          <li>
+           <strong> <%= post.published_at.strftime("%H:%M") %> </strong>
+           <strong>  <%= post.artist.name %> </strong>
+            <%= post.title %>
+            <%= post.content %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+  <hr>
+
+
+<h2> Latest stats </h2>
+<div>
+  <canvas class="w-100" id="myGlobalChart" data-stats="<%= @stats.to_json %>" data-artists="<%= @array_artists %>"></canvas>
+</div>
 <hr>
 
 <h2> Your planned album campaigns </h2>
@@ -32,30 +82,7 @@
 
 <hr>
 
-<h2> All your artists </h2>
 
-<div class="card_position">
-  <% @artists.each do |artist| %>
-    <div class="card_artist">
-      <div class="artist_name">
-        <%= link_to artist.name, artist_path(artist) %>
-      </div>
-      <div class="pic_artist">
-        <%= link_to artist_path(artist) do %>
-          <%= cl_image_tag artist.picture.key%>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
-<hr>
+  <%= link_to 'Disconnect Facebook', disconnect_path %>
 
-
-<h2> Latest stats </h2>
-<div>
-  <canvas class="w-100" id="myChart" data-stats="<%= @stats.to_json %>"></canvas>
-</div>
-<hr>
-
-<%= link_to 'Disconnect Facebook', disconnect_path %>
-
+ </div>

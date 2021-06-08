@@ -13,12 +13,14 @@
   </head>
 
   <body>
-    <%= render 'shared/sidebar' %>
+    <%= render 'shared/sidebar' unless @hide_navbar %>
     <div class="main-container">
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
       <%= yield %>
+
     </div>
+
   </body>
 </html>
 
