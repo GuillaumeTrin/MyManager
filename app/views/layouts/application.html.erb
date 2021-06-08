@@ -13,9 +13,7 @@
   </head>
 
   <body>
-   <% unless current_user&.facebook_access_token.blank? %>
-    <%= render 'shared/navbar' %>
-    <% end %>
+    <%= render 'shared/sidebar' unless @hide_navbar %>
     <div class="main-container">
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>

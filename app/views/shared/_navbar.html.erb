@@ -1,6 +1,8 @@
 <div class="my-navbar">
   <div class="nav-icon">
-    <i class="fas fa-bars"></i>
+    <% unless @hide_navbar %>
+      <i class="fas fa-bars"></i>
+    <% end %>
   </div>
 
     <div class="nav-logo">
