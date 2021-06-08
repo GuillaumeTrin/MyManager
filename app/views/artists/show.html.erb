@@ -1,74 +1,85 @@
-<h1> <%= @artist.name %> </h1>
-
-<%= cl_image_tag @artist.picture.key, height: 300, width: 400, crop: :fill %>
-<hr>
-
-<h2> Your planning this month</h2>
-
-<%= render 'dashboards/calendar', posts: @artist.posts, only_artist: true %>
-
-<hr>
-
-
-<h2>Planned this week <%= Date.today.strftime("%d/%m/%Y") %> - <%= Date.today.next_week.strftime("%d/%m/%Y") %> </h2>
-<p>You have <%= @artist.posts.current_week.select{ |p| !p.publishable? }.size %> posts to update for <%= @artist.name %> this week</p>
-
-  <ul>
-    <% @artist.posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
-    <li>
-      <%= post.published_at.strftime("%H:%M") %>
-      <%= post.title %>
-      <%= post.content %>
-    </li>
-    <% end %>
-  </ul>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Ajouter un évènement
-</button>
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter un évènement</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<div class="container">
+  <div class="card_position_show">
+    <div class="card_artist_show">
+      <div class="artist_name">
+        <a> <%= @artist.name %> <a>
       </div>
-      <div class="modal-body">
-
-      <%= link_to "Plannifier la sortie d'un album", new_artist_album_url(@artist), role: "button", class: "btn btn-info popover-test", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
-      </a>
-
-
-      <%= link_to "Plannifier un post", new_artist_post_url(@artist), role: "button", class: "btn btn-info popover-test", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
-      </a>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <div class="pic_artist_show"> 
+        <%= cl_image_tag @artist.picture.key%>
       </div>
     </div>
   </div>
+  <hr>
+
+  <h2> Your planning this month</h2>
+
+  <%= render 'dashboards/calendar', posts: @artist.posts, only_artist: true %>
+
+  <hr>
+
+
+  <h2>Planned this week <%= Date.today.strftime("%d/%m/%Y") %> - <%= Date.today.next_week.strftime("%d/%m/%Y") %> </h2>
+  <p>You have <%= @artist.posts.current_week.select{ |p| !p.publishable? }.size %> posts to update for <%= @artist.name %> this week</p>
+
+    <ul>
+      <% @artist.posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
+      <li>
+        <%= post.published_at.strftime("%H:%M") %>
+        <%= post.title %>
+        <%= post.content %>
+      </li>
+      <% end %>
+    </ul>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Add an event
+  </button>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add an event</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+        <%= link_to "Plannifier la sortie d'un album", new_artist_album_url(@artist), role: "button", class: "btn btn-info popover-test", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
+        </a>
+
+
+        <%= link_to "Plannifier un post", new_artist_post_url(@artist), role: "button", class: "btn btn-info popover-test", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
+        </a>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <hr>
+
+  <h2> Release </h2>
+
+
+  <hr>
+
+  <h2> Useful links </h2>
+
+  <div>
+    <canvas id="myChart" data-stats="<%= @stats.to_json %>"></canvas>
+  </div>
+
 </div>
 
-
-
-
-
-<hr>
-
-<h2> Release </h2>
-
-
-<hr>
-
-<h2> Useful links </h2>
-
-<div>
-  <canvas id="myChart" data-stats="<%= @stats.to_json %>"></canvas>
-</div>

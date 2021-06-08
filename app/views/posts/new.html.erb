@@ -3,7 +3,7 @@
 
   <div data-controller="preview" class="create-form d-flex justify-content-around mb-5">
     <div class="new-post-form">
-    <%= simple_form_for([@artist, @post]) do |f| %>
+    <%= simple_form_for([@artist, @post], html: {multipart: true}) do |f| %>
       <div class="form-inputs">
         <%= f.input :title, :label => "Enter your post title", input_html: { "data-preview-target": "title", "data-action": "input->preview#gettitle" } %>
         <%= f.input :content, :label => "Enter your post content", input_html: { "data-preview-target": "content", "data-action": "input->preview#getcontent" } %>

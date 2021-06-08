@@ -21,13 +21,14 @@ class FacebookController < ApplicationController
     client = OAuth2::Client.new(ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], site: 'https://graph.facebook.com', token_url: "/oauth/access_token")
     auth_code = params[:code]
     token = client.auth_code.get_token(auth_code, redirect_uri: "#{ENV['CALLBACK_URL']}/oauth2/callback", headers: {'Authorization' => 'Basic some_password'})
-    
-    current_user.facebook_access_token = token
+    current_user.facebook_access_token = token.to_hash[:access_token]
     current_user.save
+    UpdateOneUserJob.perform_later(current_user)
     response = token.get('/me/accounts')
     json = JSON.parse(response.body)
     artists = json["data"]
     create_artists(artists, token)
+    UpdateAllDataArtists.call
     redirect_to root_path
   end
 
@@ -45,9 +46,11 @@ class FacebookController < ApplicationController
   end
 
   def create_artists(artists, token)
-    Artist.destroy_all # todo remove this line
     artists.each do |artist|
       name = artist["name"]
+      find_artist = Artist.find_by name: name
+      next unless find_artist.nil?
+
       id = artist["id"]
       picture_url = get_picture(token, id)
       img_file = URI.open(picture_url)
