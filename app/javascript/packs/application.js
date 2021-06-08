@@ -35,6 +35,7 @@ application.load(definitionsFromContext(context))
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initChart } from "../plugins/init_chart"
+import { animFb } from "../plugins/anim_fb"
 import { initNavbar } from "../plugins/init_navbar";
 import { initGlobalChart } from "../plugins/init_global_chart";
 document.addEventListener('turbolinks:load', () => {
@@ -43,5 +44,9 @@ document.addEventListener('turbolinks:load', () => {
 
   initChart();
   initNavbar();
+
+  animFb();
+
   initGlobalChart();
+
 });
