@@ -9,6 +9,17 @@
 
 <hr>
 
+<h2> This artist planned album campaigns </h2>
+  <ul>
+    <% @albums.each do |album| %>
+        <li>
+          <%= link_to album.name, artist_album_path(album.artist, album) %>
+        </li>
+    <% end %>
+  </ul>
+
+<hr>
+
 
 <h2>Planned this week <%= Date.today.strftime("%d/%m/%Y") %> - <%= Date.today.next_week.strftime("%d/%m/%Y") %> </h2>
 <p>You have <%= @artist.posts.current_week.select{ |p| !p.publishable? }.size %> posts to update for <%= @artist.name %> this week</p>
