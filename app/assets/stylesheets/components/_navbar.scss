@@ -1,0 +1,21 @@
+.my-navbar {
+  width: 100%;
+  background-color: white;
+  height: 7vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+}
+
+.nav-icon i {
+  font-size: 24px;
+  color: #FF5532;
+}
+
+.my-avatar img {
+  width: 40px;
+  height:40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
