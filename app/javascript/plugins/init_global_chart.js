@@ -4,6 +4,7 @@ const initGlobalChart = () => {
     const ctx = document.getElementById('myGlobalChart');
     if (!ctx)
     return
+    ctx.style.backgroundColor = 'rgba(255,255,255,1)';
     const data_global = JSON.parse(ctx.dataset.stats);
     console.log(data_global);
     const artists_ids = JSON.parse(ctx.dataset.artists);
@@ -14,14 +15,8 @@ const initGlobalChart = () => {
           data: data_global,
         //   data: [{x:'2021-06-02', y:20}, {x:'2021-06-03', y:10}],
         }]
-    artists_ids.forEach((artist_id) => { 
-       one_artist_stat(artist_id).then((json_stat) => {
-          let dataset = build_dataset(json_stat)
-          
-          artist_datasets.push(dataset);
-      });
-    })
-    console.log(artist_datasets);
+ 
+   
     const data = { 
         datasets: artist_datasets
       };
@@ -37,13 +32,21 @@ const initGlobalChart = () => {
         config
       );
   
-
+      artists_ids.forEach((artist_id) => { 
+        one_artist_stat(artist_id).then((json_stat) => {
+           let dataset = build_dataset(json_stat)
+           
+           artist_datasets.push(dataset);
+           myChart.update()
+       });
+     })
 }
 
 const random_rgba = () => {
-    const o = Math.round, r = Math.random, s = 255;
+    const o = Math.round, r = Math.random, s = 90;
     return 'rgb(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
 }
+
 
 
 const build_dataset = (json_stat) => {
