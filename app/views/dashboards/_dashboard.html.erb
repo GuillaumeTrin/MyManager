@@ -20,12 +20,22 @@
 
 <h2> All your artists </h2>
 
-<% @artists.each do |artist| %>
-  <%= cl_image_tag artist.picture.key, height: 300, width: 400, crop: :fill %>
-  <%= link_to artist.name, artist_path(artist) %>
-<% end %>
-
+<div class="card_position">
+  <% @artists.each do |artist| %>
+    <div class="card_artist">
+      <div class="artist_name">
+        <%= link_to artist.name, artist_path(artist) %>
+      </div>
+      <div class="pic_artist"> 
+        <%= link_to artist_path(artist) do %>
+          <%= cl_image_tag artist.picture.key%>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 <hr>
+
 
 <h2> Latest stats </h2>
 <div>
