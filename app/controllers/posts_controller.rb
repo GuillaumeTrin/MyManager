@@ -17,7 +17,9 @@ class PostsController < ApplicationController
     @post.artist = @artist
     if @post.save!
       schedule_post(@post)
+      # if from new post
       redirect_to artist_path(@post.artist), notice: "You've just created a new post"
+      #else redirect_to show album
     else
       render :new
     end
