@@ -36,10 +36,12 @@ application.load(definitionsFromContext(context))
 // import { initSelect2 } from '../components/init_select2';
 import { initChart } from "../plugins/init_chart"
 import { initNavbar } from "../plugins/init_navbar";
+import { initGlobalChart } from "../plugins/init_global_chart";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
   initChart();
   initNavbar();
+  initGlobalChart();
 });
