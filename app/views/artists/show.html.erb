@@ -74,7 +74,17 @@
   <hr>
 
   <h2> Release </h2>
+        
+  <hr>
 
+  <h2> <%= @artist.name %> planned album campaigns </h2>
+    <ul>
+      <% @albums.each do |album| %>
+          <li>
+            <%= link_to album.name, artist_album_path(album.artist, album) %>
+          </li>
+      <% end %>
+    </ul>
 
   <hr>
 
@@ -85,4 +95,3 @@
   </div>
 
 </div>
-

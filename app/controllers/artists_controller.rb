@@ -1,6 +1,7 @@
 class ArtistsController < ApplicationController
   def show
     @artist = Artist.find(params[:id])
+    @albums = @artist.albums
     start_date = params.fetch(:start_date, Date.current).to_date
     @posts = Post.where(published_at: start_date..Date.current, artist: @artist)
 
@@ -8,7 +9,6 @@ class ArtistsController < ApplicationController
     if havestats(@artist)
       db_stats_array = @artist.stats.where('date > ?', DateTime.now - 7).to_a
       @stats = db_stat_extract(db_stats_array)
-      
     else
       UpdateOneArtistJob.perform_now(@artist)
     end
@@ -16,6 +16,16 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
+  end
+
+  def statartist
+    @artist = Artist.find(params[:id])
+    db_stats_array = @artist.stats.where('date > ?', DateTime.now - 7).to_a
+    @stats = db_stat_extract(db_stats_array)
+    respond_to do |format|
+      format.json { render json: {stats: @stats, name: @artist.name} }
+    end
+
   end
 
   private
