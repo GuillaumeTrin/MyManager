@@ -1,3 +1,4 @@
+// VIEW DASHBOARD
 .card_position {
   align-content: flex-start;
   display: flex;
@@ -23,10 +24,19 @@
   }
 }
 
+.artist_name {
+  a {
+    font-size: 28px;
+    font-style: bold;
+    color: black;
+    text-decoration:none;
+  }
+}
+
+// VIEW IN ARTIST SHOW
 .card_position_show {
   align-content: flex-start;
   display: flex;
-  padding: 15px 40px 30px 40px;
 }
 
 
@@ -37,15 +47,18 @@
     border-radius: 50%;
     box-shadow: 5px 5px 5px rgba(73, 73, 73, 0.288);
     display: flex;
+    margin-right: 16px;
   }
 }
 
 
-.artist_name {
-  a {
-    font-size: 28px;
-    font-style: bold;
-    color: black;
-    text-decoration:none;
-  }
+.card_artist_show {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-direction: row-reverse;
+  padding: 15px 20px 10px 40px;
 }
+
+
+
