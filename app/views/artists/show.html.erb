@@ -1,6 +1,13 @@
-<h1> <%= @artist.name %> </h1>
-
-<%= cl_image_tag @artist.picture.key, height: 300, width: 400, crop: :fill %>
+<div class="card_position">
+  <div class="card_artist">
+    <div class="artist_name">
+      <h1> <%= @artist.name %> </h1>
+    </div>
+    <div class="pic_artist_show"> 
+      <%= cl_image_tag @artist.picture.key%>
+    </div>
+  </div>
+</div>
 <hr>
 
 <h2> Your planning this month</h2>
