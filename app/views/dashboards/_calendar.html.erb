@@ -1,4 +1,4 @@
-<div>
+<div class="calendar">
   <%= month_calendar(events: posts) do |date, posts| %>
     <%= date.day %>
     <% posts.each do |post| %>
@@ -8,11 +8,11 @@
         <% else %>
           <i class="fas fa-times-circle"></i>
         <% end %>
-    
-        <%= link_to '#', data: {toggle: "modal", target: "#editPost#{post.id}"} do %>
-          <%= post.published_at.strftime("%H:%M") %> <%= post.title %> <%= post.artist.name unless only_artist %>
-        <% end %>    
-
+        <div class="size_post"> 
+          <%= link_to '#', data: {toggle: "modal", target: "#editPost#{post.id}"} do %>
+            <%= post.published_at.strftime("%H:%M") %> <%= post.title %> <%= post.artist.name unless only_artist %>
+          <% end %>    
+        </div>  
         <!-- Modal for each post-->
         <div class="modal fade bd-example-modal-lg" id="editPost<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="editPostModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">

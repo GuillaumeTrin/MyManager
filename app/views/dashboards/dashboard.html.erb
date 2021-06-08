@@ -1,10 +1,12 @@
-  <!-- <h1> Welcome to your dashboard <%= current_user.first_name %> <%= current_user.last_name %> </h1>
- -->
-<% if current_user.facebook_access_token.blank? %>
-  <%= render 'empty_dashboard' %>
-<% elsif current_user.facebook_access_token.present? && current_user.artists.empty?%>
-  <p> télécharger mes artistes</p>
-<% else %>
-  <%= render 'dashboard', artists: @artists %>
-<% end %>
+<div class="marge_base col-xs-1 text-center my-4">
+
+  <% if current_user.facebook_access_token.blank? %>
+    <%= render 'empty_dashboard' %>
+  <% elsif current_user.facebook_access_token.present? && current_user.artists.empty?%>
+    <p> télécharger mes artistes</p>
+  <% else %>
+    <%= render 'dashboard', artists: @artists %>
+  <% end %>
+
+</div>
 

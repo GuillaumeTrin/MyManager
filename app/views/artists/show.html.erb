@@ -1,4 +1,4 @@
-<div class="container">
+<div class="marge_base">
   <div class="card_position_show">
     <div class="card_artist_show">
       <div class="artist_name">
@@ -10,29 +10,35 @@
     </div>
   </div>
   <hr>
-
   <h2> Your planning this month</h2>
+  <div class="display_cenlendar_planned"> 
+    <div class="calendar_display">
+      <%= render 'dashboards/calendar', posts: @artist.posts, only_artist: true %>
+    </div> 
+      <hr>
+    <div class="card_planned_display">
+      <div class="planned_title"> 
+        <h2>Planned this week </h2>
+         
+      </div>
+      <h4> <%= Date.today.strftime("%d/%m/%Y") %> <br>
+      ------ 
+      <p>  <%= Date.today.next_week.strftime("%d/%m/%Y") %>  </h4></p> 
+      <p>You have <strong><%= @artist.posts.current_week.select{ |p| !p.publishable? }.size %> posts </strong> to update for <%= @artist.name %> this week</p>
 
-  <%= render 'dashboards/calendar', posts: @artist.posts, only_artist: true %>
-
-  <hr>
-
-
-  <h2>Planned this week <%= Date.today.strftime("%d/%m/%Y") %> - <%= Date.today.next_week.strftime("%d/%m/%Y") %> </h2>
-  <p>You have <%= @artist.posts.current_week.select{ |p| !p.publishable? }.size %> posts to update for <%= @artist.name %> this week</p>
-
-    <ul>
-      <% @artist.posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
-      <li>
-        <%= post.published_at.strftime("%H:%M") %>
-        <%= post.title %>
-        <%= post.content %>
-      </li>
-      <% end %>
-    </ul>
-
+        <ul>
+          <% @artist.posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
+          <li>
+            <strong><%= post.published_at.strftime("%H:%M") %>
+            <%= post.title %></strong>
+            <%= post.content %>
+          </li>
+          <% end %>
+        </ul>
+    </div>
+  </div> 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  <button type="button" class="btn btn-primary create-button" class="create-button" data-toggle="modal" data-target="#exampleModal">
   Add an event
   </button>
 
