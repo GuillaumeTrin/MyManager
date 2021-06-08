@@ -1,4 +1,4 @@
-<div class="sidebar sidebar-default">
+<div class="sidebar">
   <div class="sidebar-header">
     <%= link_to root_path, class: "sidebar-img" do %>
       <%= image_tag "logomymanager.png" %>
@@ -8,10 +8,10 @@
     <% end %>
   </div>
   <div class="sidebar-items">
-    <a href="#" class="nav_link active">
+    <%= link_to root_path do %>
       <i class="fas fa-home"></i>
       <span class="nav_name">Dashboard</span>
-    </a>
+    <% end %>
     <a href="#" class="nav_link">
       <i class="fas fa-user"></i>
       <span class="nav_name">Users</span>
