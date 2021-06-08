@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :artists, only: [:show, :index] do
     resources :posts
     resources :albums, only: [:index, :show, :new, :create]
+    get 'statartist' , on: :member
   end
+  
   resources :posts, only: [:destroy]
   devise_for :users
 
@@ -19,4 +21,6 @@ Rails.application.routes.draw do
   get 'oauth2/callback', to: 'facebook#callback'
   # get '/dashboard', to: 'dashboards#dashboard'
   get '/disconnect', to: 'facebook#disconnect'
+
+
 end

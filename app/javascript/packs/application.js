@@ -37,11 +37,16 @@ application.load(definitionsFromContext(context))
 import { initChart } from "../plugins/init_chart"
 import { animFb } from "../plugins/anim_fb"
 import { initNavbar } from "../plugins/init_navbar";
+import { initGlobalChart } from "../plugins/init_global_chart";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
   initChart();
   initNavbar();
+
   animFb();
+
+  initGlobalChart();
+
 });
