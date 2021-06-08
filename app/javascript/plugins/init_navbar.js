@@ -1,8 +1,8 @@
 const initNavbar = () => {
   const menu = document.querySelector(".nav-icon");
+  const sidebar = document.querySelector(".sidebar");
 
   menu.addEventListener("click", (event) => {
-    const sidebar = document.querySelector(".sidebar");
     sidebar.classList.toggle("sidebar-default");
   });
 }
