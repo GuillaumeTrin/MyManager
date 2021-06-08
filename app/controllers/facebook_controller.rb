@@ -23,12 +23,12 @@ class FacebookController < ApplicationController
     token = client.auth_code.get_token(auth_code, redirect_uri: "#{ENV['CALLBACK_URL']}/oauth2/callback", headers: {'Authorization' => 'Basic some_password'})
     current_user.facebook_access_token = token.to_hash[:access_token]
     current_user.save
-    UpdateOneUserJob.perform_now(current_user)
+    UpdateOneUserJob.perform_later(current_user)
     response = token.get('/me/accounts')
     json = JSON.parse(response.body)
-
     artists = json["data"]
     create_artists(artists, token)
+    UpdateAllDataArtists.call
     redirect_to root_path
   end
 
@@ -49,7 +49,7 @@ class FacebookController < ApplicationController
     artists.each do |artist|
       name = artist["name"]
       find_artist = Artist.find_by name: name
-      next if find_artist.nil?
+      next unless find_artist.nil?
 
       id = artist["id"]
       picture_url = get_picture(token, id)
