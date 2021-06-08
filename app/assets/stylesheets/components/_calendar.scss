@@ -1,0 +1,26 @@
+.display_cenlendar_planned {
+  display: flex;
+  align-items: flex-start;
+}
+
+.calendar_display {
+  width: 100%;
+}
+
+.planned_display {
+  justify-content: space-between;
+  padding-left: 16px;
+  padding-top: 21px;
+}
+
+.fas.fa-check-circle {
+  color: green;
+}
+
+.fas.fa-times-circle {
+  color: red;
+}
+
+.size_post {
+  font-size: 12px;
+}
