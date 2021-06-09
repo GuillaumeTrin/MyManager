@@ -4,7 +4,7 @@
       <div class="pic_artist_show">
         <%= cl_image_tag @artist.picture.key%>
       </div>
-      <div class="artist_name">
+      <div class="artist_name name-show">
         <a> <%= @artist.name %> </a>
       </div>
     </div>
@@ -27,7 +27,7 @@
               </button>
             </div>
             <div class="modal-body over-body">
- 
+
             <%= link_to "Plan the release of an album", new_artist_album_url(@artist), role: "button", class: "btn btn-info popover-test modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
             </a>
 

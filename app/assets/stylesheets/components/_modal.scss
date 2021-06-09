@@ -14,7 +14,7 @@
   margin-bottom: 8px;
 }
 
-.modal-button {
+.simple-calendar .modal-button {
   background-color: white;
   border: 1px solid #ff5532;
   color: #ff5532;
@@ -22,7 +22,7 @@
   font-family: 'Noto', sans-serif;
 }
 
-.modal-button:hover {
+.simple-calendar .modal-button:hover {
   background-color: #ff5532;
   color: white;
   border: 1px solid #ff5532;
@@ -41,15 +41,16 @@
   border: 1px solid #343f56;
 }
 
-.delete-modal-button {
+.simple-calendar .delete-modal-button {
   background-color: #ff5532;
   font-family: 'Noto Sans KR', sans-serif;
   border: 1px solid #ff5532;
   border-radius: 8px;
   margin-top: 24px;
+  color: white;
 }
 
-.delete-modal-button:hover {
+.simple-calendar .delete-modal-button:hover {
   background-color: white;
   border: 1px solid #ff5532;
   color: #ff5532;
