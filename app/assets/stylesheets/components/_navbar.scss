@@ -20,12 +20,13 @@
   object-fit: cover;
 }
 
-.nav-logo {
-  img{
-    width: 220px;
-    height:60px;
+.nav-logo p{
+
     justify-content: center;
-  }
+    font-family: 'Gotham', sans-serif;
+    color: #FF5532;
+    font-size: 28px;
+    font-weight: bold;
 
 }
 

@@ -1,13 +1,23 @@
 .facebook_button {
    background: #4267b2;
-   border-radius: 5px;
+   border-radius: 20px;
    color: white;
-   height: 40px;
    text-align: center;
-   width: 250px;
    padding: 16px 24px;
-   font-family: 'Gotham', sans-serif;
+   font-family: 'Noto Sans KR', sans-serif;
+   font-size: 16px;
+   display: flex;
+   align-items: center;
+  p {
+    margin: 0;
+  }
+  .fa-facebook {
+    font-size: 48px;
+    margin-right: 24px;
+  }
 }
 .facebook_button:hover {
-  color: white
+  color: white;
+  text-decoration: none;
+  box-shadow: rgba(100, 100, 111, 0.7) 0px 7px 29px 0px;
 }

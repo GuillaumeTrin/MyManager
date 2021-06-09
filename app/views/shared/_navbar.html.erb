@@ -5,14 +5,18 @@
     <% end %>
   </div>
 
-    <div class="nav-logo">
       <%= link_to root_path, class: "navbar-logo text-decoration-none" do %>
-        MY MANAGER
+        <div class="nav-logo">
+          <p>MY MANAGER</p>
+        </div>
       <% end %>
-    </div>
-
 
   <div class="my-avatar">
-    <img src="https://file1.topsante.com/var/topsante/storage/images/couple-et-sexualite/amour-et-couple/vie-de-couple/amour-comment-reconnaitre-un-homme-amoureux/102208-2-fre-FR/Amour-comment-reconnaitre-un-homme-amoureux.jpg?alias=original" alt="avatar-homme">
+    <% if current_user.avatar.attached? %>
+      <%= cl_image_tag current_user.avatar.key, height: 50, width: 50, crop: :fill %>
+    <% else %>
+      <i class="fas fa-user"></i>
+    <% end %>
+
   </div>
 </div>

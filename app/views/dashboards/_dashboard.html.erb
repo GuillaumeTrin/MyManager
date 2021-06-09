@@ -10,7 +10,7 @@
           <div class="artist_name">
             <%= link_to artist.name, artist_path(artist) %>
           </div>
-          <div class="pic_artist"> 
+          <div class="pic_artist">
             <%= link_to artist_path(artist) do %>
               <%= cl_image_tag artist.picture.key%>
             <% end %>
@@ -19,14 +19,13 @@
       <% end %>
     </div>
   </div>
- 
-  
+
+
   <h2>Your planning on <i class="fab fa-facebook dashboard" ></i></h2>
 
 
     <%= render "shared/display_calendar_planned", albums: @albums, posts: @posts %>
 
- 
 
   <hr>
 
@@ -35,13 +34,6 @@
 <div id="graphstats">
   <canvas class="w-100" id="myGlobalChart" data-stats="<%= @stats.to_json %>" data-artists="<%= @array_artists %>"></canvas>
 </div>
-<hr>
 
-
-
-<hr>
-
-
-  <%= link_to 'Disconnect Facebook', disconnect_path %>
 
  </div>
