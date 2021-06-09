@@ -13,24 +13,43 @@
   <h2> Your planning this month </h2>
   <div class="display_cenlendar_planned">
     <div class="card_planned_display">
-          <div class="planned_title">
-            <h2><strong>Planned this week</strong> </h2>
+          <div class="planned_title"> 
+             <h3><strong>STATUS WEEK <%= Date.today.strftime("%U") %> </strong> <h3>
 
-          </div>
-          <h4> <%= Date.today.strftime("%d/%m/%Y") %> <br>
-          ------
-          <p>  <%= Date.today.next_week.strftime("%d/%m/%Y") %>  </h4></p>
-          <p>You have <strong><%= @artist.posts.current_week.select{ |p| !p.publishable? }.size %> posts </strong> to update for <%= @artist.name %> this week</p>
+              <br>
+              <% unless @all_publishable %>
+                <h2><span class="badge badge-warning">TO BE UPDATED <i class="fas fa-exclamation-triangle"></i> </span></h2>
+                <br>
+                <p> <i class="far fa-edit"></i> : <strong> <%= @posts.current_week.select{ |p| !p.publishable? }.size %> </strong> 
+                <h6>
+                  <div> 
+                    <% @artist.posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
 
-            <ul>
-              <% @artist.posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
-              <li>
-                <strong><%= post.published_at.strftime("%H:%M") %>
-                <%= post.title %></strong>
-                <%= post.content %>
-              </li>
+                      <%= link_to '#', data: {toggle: "modal", target: "#editPost#{post.id}"} do %>
+                        <strong> <%= post.published_at.strftime("%a-%H:%M") %> </strong>
+                        <strong> <%= post.artist.name %> </strong>
+                      <% end %>    
+                    <% end %>
+                  </div>
+                </h6>
+                <br>
+                <h6> <i class="fas fa-compact-disc"></i> Album campaign</h6> 
+                <h6>
+                  <% @albums.each do |album| %>
+                    <div>  
+                    <strong>  <%= link_to album.name, artist_album_path(album.artist, album) %></strong>
+                      <strong><%= album.artist.name %></strong>
+                    </div>
+                  <% end %>
+                </h6>
+              <% else %>
+                <h1>Status = <span class="badge badge-success">UP TO DATE <i class="fas fa-check"></i> </span></h1>
               <% end %>
-            </ul>
+            </div>
+
+
+          
+            
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary create-button" class="create-button" data-toggle="modal" data-target="#exampleModal">
             Add an event
@@ -64,7 +83,7 @@
               </div>
             </div>
         </div>
-
+      </div>
     <div class="calendar_display">
       <%= render 'dashboards/calendar', posts: @artist.posts, only_artist: true %>
     </div>
@@ -74,17 +93,6 @@
   <hr>
 
   <h2> Release </h2>
-
-  <hr>
-
-  <h2> <%= @artist.name %> planned album campaigns </h2>
-    <ul>
-      <% @albums.each do |album| %>
-          <li>
-            <%= link_to album.name, artist_album_path(album.artist, album) %>
-          </li>
-      <% end %>
-    </ul>
 
   <hr>
 
