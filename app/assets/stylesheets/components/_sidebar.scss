@@ -52,6 +52,7 @@
       &:hover {
         color: white;
         font-size: 20px;
+        transition: 0.1s ease-in-out;
       }
     }
 
@@ -68,7 +69,6 @@
   .sidebar-footer {
     i {
       width: 24px;
-      margin-bottom: 24px;
     }
 
     a {
@@ -80,6 +80,7 @@
       &:hover {
         color: white;
         font-size: 20px;
+        transition: 0.1s ease-in-out;
       }
     }
 
@@ -117,11 +118,17 @@
 
 
   .sidebar-footer {
+
+    a {
+      display: flex;
+      align-items: center;
+    }
+
     span {
       display: inline;
     }
 
-     i {
+    i {
       margin-right: 10px;
     }
   }
