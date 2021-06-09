@@ -1,20 +1,23 @@
-.title h1 {
-  text-align: center;
-  padding: 32px;
-  color: #ff5532;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: bold;
+.form-title {
+  h1 {
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align: center;
+    padding: 32px;
+    color: #ff5532;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align: center;
+    padding: 24px;
+    color: #343f56;
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
 }
 
-.title h2 {
-  text-align: center;
-  padding: 24px;
-  color: #343f56;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 24px;
-}
-
-.title a {
+.form-title a {
   align-items: center;
 }
 

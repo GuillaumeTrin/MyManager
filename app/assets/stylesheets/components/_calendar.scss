@@ -20,13 +20,21 @@
   border-radius: 5px;
   flex-direction: column;
   text-align: center;
+
+  a{
+    text-decoration: none;
+    color: black;
+  }
 }
 
+
+
 .planned_title {
-  color: #ff5532;
+  color: #000000;
   font-weight: bold;
   text-align: center;
 }
+
 
 .fas.fa-check-circle {
   color: green;
