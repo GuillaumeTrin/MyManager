@@ -22,8 +22,9 @@ class UpdateOneArtist < BaseService
     client = OAuth2::Client.new(ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], site: 'https://graph.facebook.com', token_url: "/oauth/access_token")
     token = OAuth2::AccessToken.new(client,artist.facebook_access_token)
     now = Date.today
-    a_week_ago = (now - 7)
+    a_week_ago = (now - 8)
     response = token.get("#{artist.id_facebook}/insights/page_post_engagements/?since=#{a_week_ago}")
+  
     json = JSON.parse(response.body)
     json["data"][1]["values"]
   end
@@ -32,7 +33,7 @@ class UpdateOneArtist < BaseService
     array.map do |json|
       stat = Stat.new(date:json["end_time"].to_date,engagement:json["value"])
       stat.artist = artist
-      stat.save!
+      stat.save
     end
   end
 end
