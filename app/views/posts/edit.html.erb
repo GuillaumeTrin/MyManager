@@ -1,11 +1,57 @@
-<div class="container login-container">
-    <h1> Edit the </h1>
+<div class="container form-title">
+    <h1> Edit this post </h1>
 
-<%= simple_form_for([@artist, @post]) do |f| %>
-    <div class="form-inputs">
-        <%= f.input :title %>
-        <%= f.input :content %>
-        <%= f.input :published_at %>
-        <%= f.submit %>
-<% end %>
+
+  <div data-controller="preview" class="create-form d-flex justify-content-around mb-5">
+    <div class="new-post-form">
+    <%= simple_form_for([@artist, @post], html: {multipart: true}) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :published_at, :label => "Choose a date and a time to publish", html5: true, input_html: { "data-preview-target": "date", "data-action": "change->preview#getdate" } %>
+        <%= f.input :title, :label => "Enter your post title", input_html: { "data-preview-target": "title", "data-action": "input->preview#gettitle" } %>
+        <%= f.input :content, :label => "Enter your post content", input_html: { "data-preview-target": "content", "data-action": "input->preview#getcontent" } %>
+        <div class="form-group file optional post_picture">
+          <label class="file optional toto" for="post_picture">
+            Select your post image <br>
+            <span class="btn btn-primary upload-button"> Upload a picture</span>
+          </label>
+          <input class="form-control-file file optional d-none" data-preview-target="image" data-action="change->preview#getimage" type="file" name="post[picture]" id="post_picture">
+        </div>
+        <%= f.submit nil, class: "btn btn-primary create-button" %>
+      <% end %>
+      </div>
+    </div>
+
+    <div class="preview">
+      <p class= "this-is-a-preview"> This is a preview of your post </p>
+      <div class="header-preview">
+        <%= cl_image_tag @artist.picture.key, class: "avatar mr-3" %>
+        <div class="text">
+          <p> <%= @artist.name %> </p>
+          <div data-preview-target="previewDate" class="previewDate">
+            <%= @post.published_at.strftime("%d %B %Y, at %H:%M") %>
+          </div>
+        </div>
+      </div>
+      <div data-preview-target="previewTitle" class="previewTitle">
+        <%= @post.title %>
+      </div>
+      <div data-preview-target="previewContent" class="previewContent">
+        <%= @post.content %>
+      </div>
+      <% src = @post.picture.attached? ? cl_image_path(@post.picture.key) : "https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png" %>
+      <img src="<%=  src  %>" width="200" data-preview-target="previewImage" class="previewImage">
+      <div class="footer-preview">
+        <div class="likes">
+          <img src="https://cdn.worldvectorlogo.com/logos/facebook-like.svg" alt="like">
+          <img src="https://www.vectorico.com/wp-content/uploads/2018/02/Facebook-Heart.png" alt="heart">
+          <img src="https://freepngimg.com/download/facebook/65441-emoticon-like-button-haha-facebook-emoji.png" alt="haha">
+          <p>369</p>
+        </div>
+        <div class="comments">
+          <p>150 comments</p>
+          <p>80 sharings</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

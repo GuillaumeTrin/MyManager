@@ -21,9 +21,17 @@
   align-items: center;
 }
 
+.form-inputs {
+  position: relative;
+}
+
 .form-inputs label {
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 500;
+}
+
+.form-inputs span {
+  margin-top: 8px;
 }
 
 .form-inputs input {
@@ -54,6 +62,10 @@
   background-color: #ff5532;
   font-family: 'Noto Sans KR', sans-serif;
   border: 1px solid #ff5532;
+  position: absolute;
+  left: 34%;
+  margin-top: 32px;
+  width: 180px;
 }
 
 .create-button:hover {

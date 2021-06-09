@@ -5,21 +5,23 @@
     <div class="new-post-form">
     <%= simple_form_for([@artist, @post], html: {multipart: true}) do |f| %>
       <div class="form-inputs">
+        <%= f.input :published_at, :label => "Choose a date and a time to publish", html5: true, input_html: { "data-preview-target": "date", "data-action": "change->preview#getdate" } %>
         <%= f.input :title, :label => "Enter your post title", input_html: { "data-preview-target": "title", "data-action": "input->preview#gettitle" } %>
         <%= f.input :content, :label => "Enter your post content", input_html: { "data-preview-target": "content", "data-action": "input->preview#getcontent" } %>
         <div class="form-group file optional post_picture">
           <label class="file optional toto" for="post_picture">
+            Select your post image <br>
             <span class="btn btn-primary upload-button"> Upload a picture</span>
           </label>
           <input class="form-control-file file optional d-none" data-preview-target="image" data-action="change->preview#getimage" type="file" name="post[picture]" id="post_picture">
         </div>
-        <%= f.input :published_at, :label => "Choose a date and a time to publish", html5: true, input_html: { "data-preview-target": "date", "data-action": "change->preview#getdate" } %>
         <%= f.submit nil, class: "btn btn-primary create-button" %>
       <% end %>
       </div>
     </div>
 
     <div class="preview">
+      <p class= "this-is-a-preview"> This is a preview of your post </p>
       <div class="header-preview">
         <%= cl_image_tag @artist.picture.key, class: "avatar mr-3" %>
         <div class="text">
@@ -37,7 +39,7 @@
       </div>
       <% src = @post.picture.attached? ? cl_image_path(@post.picture.key) : "https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png" %>
       <img src="<%=  src  %>" width="200" data-preview-target="previewImage" class="previewImage">
-      <div class="footer">
+      <div class="footer-preview">
         <div class="likes">
           <img src="https://cdn.worldvectorlogo.com/logos/facebook-like.svg" alt="like">
           <img src="https://www.vectorico.com/wp-content/uploads/2018/02/Facebook-Heart.png" alt="heart">

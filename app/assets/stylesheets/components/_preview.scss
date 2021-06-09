@@ -61,8 +61,14 @@
   font-size: 13px;
 }
 
-.footer {
+.footer-preview {
   display: flex;
   justify-content: space-between;
+}
+
+.this-is-a-preview {
+  color: rgb(140, 140, 140);
+  text-align: center;
+  margin-bottom:32px;
 }
 
