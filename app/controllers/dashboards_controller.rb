@@ -11,6 +11,7 @@ class DashboardsController < ApplicationController
     @hide_navbar = true if current_user.facebook_access_token.blank?
     @hide_navbar1 = true if current_user.facebook_access_token.blank?
     @all_publishable = @posts.current_week.all?(&:publishable?)
+
   end
 
   def home

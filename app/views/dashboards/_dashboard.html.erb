@@ -22,48 +22,10 @@
 
 
   <h2>Your planning on <i class="fab fa-facebook dashboard" ></i></h2>
-    <div class="display_cenlendar_planned">
-      <div class="card_planned_display">
-        <div class="planned_title">
 
-          <h3><strong>STATUS WEEK <%= Date.today.strftime("%U") %> </strong> <h3>
-        </div>
-        <br>
-        <% unless @all_publishable %>
-          <h2><span class="badge badge-warning">TO BE UPDATED <i class="fas fa-exclamation-triangle"></i> </span></h2>
-          <br>
-          <p> <i class="far fa-edit"></i> : <strong> <%= @posts.current_week.select{ |p| !p.publishable? }.size %> </strong>
 
-          <h6>
-            <div>
-              <% @posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
+    <%= render "shared/display_calendar_planned", albums: @albums, posts: @posts %>
 
-                <%= link_to '#', data: {toggle: "modal", target: "#editPost#{post.id}"} do %>
-                  <strong> <%= post.published_at.strftime("%a-%H:%M") %> </strong>
-                  <strong> <%= post.artist.name %> </strong>
-                <% end %>
-              <% end %>
-            </div>
-          </h6>
-          <br>
-          <h6> <i class="fas fa-compact-disc"></i> Album campaign</h6>
-          <h6>
-            <% @albums.each do |album| %>
-              <div>
-              <strong>  <%= link_to album.name, artist_album_path(album.artist, album) %></strong>
-                <strong><%= album.artist.name %></strong>
-              </div>
-            <% end %>
-          </h6>
-        <% else %>
-          <h1>Status = <span class="badge badge-success">UP TO DATE <i class="fas fa-check"></i> </span></h1>
-        <% end %>
-      </div>
-      <div class="calendar_display">
-        <%= render 'calendar', posts: @posts, only_artist: false %>
-        <hr>
-      </div>
-     </div>
 
   <hr>
 

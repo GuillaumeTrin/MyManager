@@ -1,4 +1,4 @@
-.display_cenlendar_planned {
+.display_calendar_planned {
   display: flex;
   align-items: flex-start;
   align-items: center;
@@ -10,7 +10,7 @@
 
 .card_planned_display {
   justify-content: space-between;
-  margin: 24px 16px 24px 16px;
+  margin: 2px 16px 2px 16px;
   padding: 12px;
   overflow: hidden;
   background: white;
@@ -27,7 +27,19 @@
   }
 }
 
-
+.album_campaign {
+  justify-content: space-between;
+  margin: 24px 16px 24px 16px;
+  padding: 12px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  flex-direction: column;
+  text-align: center;
+}
 
 .planned_title {
   color: #000000;
@@ -71,12 +83,7 @@
     background-color: rgba(255,85,50,0.2);
 
   }
-
-
 }
-
-
-
 
 
 
