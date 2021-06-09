@@ -1,33 +1,34 @@
-<div class="preview">
-      <div class="header">
-        <%= cl_image_tag post.artist.picture.key, class: "avatar mr-3" %>
-        <div class="text">
-          <p> <%= post.artist.name %> </p>
-        </div>
-      </div>
-      <div class="date"> 
-        <%= post.published_at.strftime("Printed on %m/%d/%Y/%I:%M%p") %>
-      </div>
-      <div > 
-        <%= post.title %>
-      </div>
-      <div >
-        <%= post.content %>
-      </div>
-        <% if post.picture.attached? %>
-          <%= cl_image_tag post.picture.key, width: 200 %>
-        <% end %>
-      <div class="footer">
-        <div class="likes">
-          <img src="https://i.dlpng.com/static/png/6462747_preview.png" alt="like">
-          <img src="https://www.vectorico.com/wp-content/uploads/2018/02/Facebook-Heart.png" alt="heart">
-          <img src="https://freepngimg.com/download/facebook/65441-emoticon-like-button-haha-facebook-emoji.png" alt="haha">
-          <p>369</p>
-        </div>
-        <div class="comments">
-          <p>150 comments</p>
-          <p>80 sharings</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="preview-mod">
+ <div class="header-preview-mod">
+   <%= cl_image_tag post.artist.picture.key, class: "avatar mr-3" %>
+   <div class="text-mod">
+     <p> <%= post.artist.name %> </p>
+     <div class="previewDate-mod">
+       <%= post.published_at.strftime("%d %B %Y, at %H:%M") %>
+     </div>
+   </div>
+ </div>
+ <div class="previewTitle-mod">
+   <%= post.title %>
+ </div>
+ <div class="previewContent-mod">
+   <%= post.content %>
+ </div>
+ <div class="image-mod">
+    <% if post.picture.attached? %>
+      <%= cl_image_tag post.picture.key, width: 200 %>
+    <% end %>
+ </div>
+ <div class="footer">
+   <div class="likes">
+     <img src="https://lh3.googleusercontent.com/proxy/PDbtOsxN7SUIQQPK2k2WxBorRi5ukptkQ95V78HXQUJcZ8wbhqRs3SZI8MD9p8y7hJ30YIyvz2YcTxtmO0axU4snu5OT213ACJxHbLCge-5hoHGB3MeIHU-mwUFNiyc" alt="like">
+     <img src="https://www.vectorico.com/wp-content/uploads/2018/02/Facebook-Heart.png" alt="heart">
+     <img src="https://freepngimg.com/download/facebook/65441-emoticon-like-button-haha-facebook-emoji.png" alt="haha">
+     <p>369</p>
+   </div>
+   <div class="comments">
+     <p>150 comments</p>
+     <p>80 sharings</p>
+   </div>
+ </div>
+</div>
