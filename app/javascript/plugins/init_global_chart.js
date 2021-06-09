@@ -23,7 +23,16 @@ const initGlobalChart = () => {
     const config = {
         type: 'line',
         data,
-        options: {}
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                reverse: false,
+                stepSize: 3
+              },
+            }]
+          }
+        }
       };
     
       Chart.register(...registerables);
