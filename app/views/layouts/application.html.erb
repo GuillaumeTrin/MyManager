@@ -15,7 +15,7 @@
   <body>
     <%= render 'shared/sidebar' unless @hide_navbar %>
     <div class="main-container">
-      <%= render 'shared/navbar' %>
+      <%= render 'shared/navbar' unless @hide_navbar1 %>
       <%= render 'shared/flashes' %>
       <%= yield %>
         <%= render 'shared/footer' %>
