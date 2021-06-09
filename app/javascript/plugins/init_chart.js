@@ -5,14 +5,10 @@ const initChart = () => {
     if (!ctx)
     return
     const data_element = JSON.parse(ctx.dataset.stats);
-   
-    if (!ctx)
-      return
-
     const data = {
       
         datasets: [{
-          label: 'My Pages Engagements  This Week',
+          label: 'Engagements  This Week',
           backgroundColor: 'rgb(255, 85, 50)',
           borderColor: 'rgb(255, 85, 50)',
           data: data_element,
@@ -22,7 +18,16 @@ const initChart = () => {
     const config = {
         type: 'line',
         data,
-        options: {}
+        options: {
+          scales: {
+          y: {
+            ticks: {
+              // forces step size to be 50 units
+              precision: 0
+            }
+          }
+        }
+      }
       };
     
       Chart.register(...registerables);
