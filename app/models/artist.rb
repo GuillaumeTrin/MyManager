@@ -3,6 +3,7 @@ class Artist < ApplicationRecord
   has_many :albums
   has_one_attached :picture
   has_many :posts, dependent: :destroy
+  has_many :stats, dependent: :destroy
   validates :name, presence: true, uniqueness: true
   validates :id_facebook, presence: true, uniqueness: true
   has_many :stats

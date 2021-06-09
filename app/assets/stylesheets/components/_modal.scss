@@ -1,0 +1,68 @@
+.over-title {
+  color: #ff5532;
+  font-family: 'Gotham', sans-serif;
+  padding: 8px;
+  font-size: xx-large;
+}
+
+.over-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.over-body a {
+  margin-bottom: 8px;
+}
+
+.modal-button {
+  background-color: white;
+  border: 1px solid #ff5532;
+  color: #ff5532;
+  border-radius: 8px;
+  font-family: 'Noto', sans-serif;
+}
+
+.modal-button:hover {
+  background-color: #ff5532;
+  color: white;
+  border: 1px solid #ff5532;
+}
+
+.modal-close-button {
+  background-color: #343f56;
+  border: 1px solid #343f56;
+  color: white;
+  border-radius: 8px;
+}
+
+.modal-close-button:hover {
+  background-color: white;
+  color: #343f56;
+  border: 1px solid #343f56;
+}
+
+.delete-modal-button {
+  background-color: #ff5532;
+  font-family: 'Noto Sans KR', sans-serif;
+  border: 1px solid #ff5532;
+  border-radius: 8px;
+  margin-top: 24px;
+}
+
+.delete-modal-button:hover {
+  background-color: white;
+  border: 1px solid #ff5532;
+  color: #ff5532;
+}
+
+.over-calendar-body {
+  display: flex;
+}
+
+.button-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

@@ -7,7 +7,7 @@ class ArtistsController < ApplicationController
 
     @today_posts = Post.where(published_at: Date.today..Date.today + 1.days, artist: @artist)
     if havestats(@artist)
-      db_stats_array = @artist.stats.where('date > ?', DateTime.now - 7).to_a
+      db_stats_array = @artist.stats.where('date > ?', DateTime.now - 8).to_a
       @stats = db_stat_extract(db_stats_array)
     else
       UpdateOneArtistJob.perform_now(@artist)
@@ -20,12 +20,12 @@ class ArtistsController < ApplicationController
 
   def statartist
     @artist = Artist.find(params[:id])
-    db_stats_array = @artist.stats.where('date > ?', DateTime.now - 7).to_a
+    db_stats_array = @artist.stats.where('date > ?', DateTime.now - 8).to_a
+
     @stats = db_stat_extract(db_stats_array)
     respond_to do |format|
       format.json { render json: {stats: @stats, name: @artist.name} }
     end
-
   end
 
   private
