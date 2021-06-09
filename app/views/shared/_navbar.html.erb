@@ -5,12 +5,11 @@
     <% end %>
   </div>
 
-    <div class="nav-logo">
       <%= link_to root_path, class: "navbar-logo text-decoration-none" do %>
-        MY MANAGER
+        <div class="nav-logo">
+          <p>MY MANAGER</p>
+        </div>
       <% end %>
-    </div>
-
 
   <div class="my-avatar">
     <% if current_user.avatar.attached? %>
