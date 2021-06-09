@@ -3,7 +3,9 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
     @albums = @artist.albums
     start_date = params.fetch(:start_date, Date.current).to_date
-    @posts = Post.where(published_at: start_date..Date.current, artist: @artist)
+    @posts = @artist.posts
+    @all_publishable = @posts.current_week.all?(&:publishable?)
+
 
     @today_posts = Post.where(published_at: Date.today..Date.today + 1.days, artist: @artist)
     if havestats(@artist)

@@ -9,7 +9,7 @@ class DashboardsController < ApplicationController
     @stats = all_artist_stats
     @array_artists = @artists.map(&:id)
     @hide_navbar = true if current_user.facebook_access_token.blank?
-    @all_publishable = @posts.current_week.all?(&:publishable?)
+    # @all_publishable = @posts.current_week.all?(&:publishable?)
   end
 
   def home

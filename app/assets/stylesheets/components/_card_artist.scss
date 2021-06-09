@@ -82,9 +82,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  flex-direction: row-reverse;
+  flex-grow: 1;
   padding: 15px 20px 10px 40px;
 }
 
-
+.modal_add_event {
+  display: flex;
+  align-items: center;
+  right: 10%;
+}
 
