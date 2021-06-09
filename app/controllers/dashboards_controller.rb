@@ -19,7 +19,7 @@ class DashboardsController < ApplicationController
   private
 
   def all_artist_stats
-    stats_hash = Stat.order(date: :asc).group(:date).sum(:engagement)
+    stats_hash = Stat.where('date > ?', DateTime.now - 8).order(date: :asc).group(:date).sum(:engagement)
     stats_hash.map do |key, value|
       { x: key.to_date, y: value }
     end

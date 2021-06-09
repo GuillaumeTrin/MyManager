@@ -12,9 +12,9 @@ const initChart = () => {
     const data = {
       
         datasets: [{
-          label: 'My Artist Interactions  This Week',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
+          label: 'My Pages Engagements  This Week',
+          backgroundColor: 'rgb(255, 85, 50)',
+          borderColor: 'rgb(255, 85, 50)',
           data: data_element,
         //   data: [{x:'2016-12-25', y:20}, {x:'2016-12-26', y:10}],
         }]
