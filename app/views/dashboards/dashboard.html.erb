@@ -3,7 +3,7 @@
   <% if current_user.facebook_access_token.blank? %>
     <%= render 'empty_dashboard' %>
   <% elsif current_user.facebook_access_token.present? && current_user.artists.empty?%>
-    <p> télécharger mes artistes</p>
+    <%= link_to "Load your Artists from Facebook", "/oauth2/connect" %> </p>
   <% else %>
     <%= render 'dashboard', artists: @artists %>
   <% end %>
