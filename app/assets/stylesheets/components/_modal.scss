@@ -7,7 +7,8 @@
 
 .over-body {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .over-body a {
@@ -20,6 +21,7 @@
   color: white;
   border-radius: 8px;
   font-family: 'Noto', sans-serif;
+  width: 180px;
 }
 
 .modal-button:hover {
@@ -82,7 +84,7 @@
 }
 
 
-//FOCUS PUBLISHING MODAL  
+//FOCUS PUBLISHING MODAL
 .modal-body.publishing {
   text-align: center;
 
