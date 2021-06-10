@@ -10,10 +10,13 @@
           <i class="fas fa-times-circle"></i>
         <% end %>
         <% class_post = "single_post"
-             if post.has_album? 
-               class_post = "album"
-            end %>
-            <i class="fas fa-record-vinyl <%= class_post %> "></i>
+             if post.has_album? %>
+             <i class="fas fa-record-vinyl post"></i>
+              
+           <% else %>
+             <i class="far fa-envelope post"></i>
+
+           <% end %>
         <div class="size_post">
            
           <%= link_to '#', data: {toggle: "modal", target: "#editPost#{post.id}"} do %>
