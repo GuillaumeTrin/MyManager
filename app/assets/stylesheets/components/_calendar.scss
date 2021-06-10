@@ -1,7 +1,8 @@
 .display_calendar_planned {
-  display: flex;
-  align-items: flex-start;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 0.3fr 0.7fr;
+  grid-gap: 24px;
+  margin-bottom: 24px;
 }
 
 .calendar_display {
@@ -10,8 +11,7 @@
   padding: 12px;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   border-radius: 5px;
-  margin: 0 16px 24px 0;
-  height: 594.5px;
+  // margin: 0 16px 24px 0;
 }
 
 .card_planned_display {
@@ -77,6 +77,7 @@
 }
 
 .simple-calendar {
+
   .calendar-heading {
     text-align: center;
     margin-bottom: 8px;
@@ -115,8 +116,8 @@
   padding: 12px;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   border-radius: 5px;
-  margin: 0 16px 24px 16px;
-  height: 594.5px;
+  // margin: 0 16px 24px 16px;
+  justify-self: stretch;
 }
 
 .check-icon {

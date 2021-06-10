@@ -10,6 +10,11 @@
   position: absolute;
   bottom: 0px;
 }
+
+.footer a {
+  line-height: 0;
+}
+
 .footer-links {
   display: flex;
   align-items: center;
