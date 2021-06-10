@@ -6,6 +6,12 @@
 
 .calendar_display {
   width: 100%;
+  background-color: white;
+  padding: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  margin: 0 16px 16px 0;
+  height: 594.5px;
 }
 
 .card_planned_display {
@@ -21,7 +27,7 @@
   flex-direction: column;
   text-align: center;
 
-  a{
+  a {
     text-decoration: none;
     color: black;
   }
@@ -39,6 +45,12 @@
   border-radius: 5px;
   flex-direction: column;
   text-align: center;
+  overflow: hidden;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 .planned_title {
@@ -85,5 +97,26 @@
   }
 }
 
+.post_album {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  margin: 0 16px 16px 16px;
+  height: 594.5px;
+}
 
+.check-icon {
+  font-size: 52px;
+}
 
+.list-posts {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-posts a:hover {
+  color: #ff5532;
+}

@@ -1,50 +1,56 @@
 <% all_publishable = @posts.current_week.all?(&:publishable?) %>
 
-   <div class="display_calendar_planned"> 
-      <div class="post_album">    
+   <div class="display_calendar_planned">
+      <div class="post_album">
+        <h2 class="title" >Your tasks </h2>
         <div class="card_planned_display">
-          <div class="planned_title"> 
+          <div class="planned_title">
 
-            <h3><strong>STATUS WEEK <%= Date.today.strftime("%U") %> </strong> <h3>
+            <h3><strong>Status week <%= Date.today.strftime("%U") %> </strong> <h3>
           </div>
           <br>
           <% unless all_publishable %>
-            <h2><span class="badge badge-warning">TO BE UPDATED <i class="fas fa-exclamation-triangle"></i> </span></h2>
+            <h2><span class="badge badge-warning"> NEEDS UPDATES <i class="fas fa-exclamation-triangle"></i> </span></h2>
             <br>
-            <p> <i class="far fa-edit"></i> : <strong> <%= posts.current_week.select{ |p| !p.publishable? }.size %> </strong> 
-            
+            <p> <i class="far fa-edit"></i> : <strong> <%= posts.current_week.select{ |p| !p.publishable? }.size %> </strong>
+
             <h6>
-              <div> 
+              <div class= "list-posts">
                 <% posts.current_week.select{ |p| !p.publishable? }.each do |post| %>
 
                   <%= link_to '#', data: {toggle: "modal", target: "#editPost#{post.id}"} do %>
-                    <strong> <%= post.published_at.strftime("%a-%H:%M") %> </strong>
-                    <strong> <%= post.artist.name %> </strong>
-                  <% end %>    
+                    <strong> <%= post.published_at.strftime("%a-%H:%M") %> - </strong>
+                    <%= post.artist.name %>
+                  <% end %>
                 <% end %>
               </div>
             </h6>
             <br>
-    
+
           <% else %>
-            <h1>Status = <span class="badge badge-success">UP TO DATE <i class="fas fa-check"></i> </span></h1>
+            <h1 class= "check-icon"> <i class="fas fa-check-circle"></i> </h1>
           <% end %>
         </div>
-        <div class="album_campaign">
-        <h5> <i class="fas fa-tasks"></i></i> Album campaign</h5> 
+
+        <div class="album_campaign planned_title">
+        <h3> <strong> Check your upcoming campaigns </strong> </h3>
+        <br>
         <h6>
           <% albums.each do |album| %>
-            <div>  
-            <strong>  <%= link_to album.name, artist_album_path(album.artist, album) %></strong>
-              <strong><%= album.artist.name %></strong>
+            <div class="list-posts">
+            <%= link_to artist_album_path(album.artist, album) do %>
+            <strong> <%= album.name %> - Release: <%= album.out_at.strftime("%d/%m/%Y") %></strong> <br>
+            <%= album.artist.name %>
+
+            <% end %>
             </div>
           <% end %>
         </h6>
       </div>
       </div>
-      
+
       <div class="calendar_display">
+        <h2 class="title" >Your posts planning on <i class="fab fa-facebook dashboard" ></i></h2>
         <%= render 'shared/calendar', posts: posts, only_artist: false %>
-        <hr>
       </div>
     </div>

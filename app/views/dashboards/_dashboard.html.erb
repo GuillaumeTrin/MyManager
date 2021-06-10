@@ -21,19 +21,16 @@
   </div>
 
 
-  <h2>Your planning on <i class="fab fa-facebook dashboard" ></i></h2>
-
-
     <%= render "shared/display_calendar_planned", albums: @albums, posts: @posts %>
 
 
-  <hr>
+  <div class="stats">
+
+    <h2 class="title"> Analytics </h2>
+    <div id="graphstats">
+      <canvas class="w-100" id="myGlobalChart" width="400" height="100" data-stats="<%= @stats.to_json %>" data-artists="<%= @array_artists %>"></canvas>
+    </div>
+  </div>
 
 
-<h2> Latest stats </h2>
-<div id="graphstats">
-  <canvas class="w-100" id="myGlobalChart" data-stats="<%= @stats.to_json %>" data-artists="<%= @array_artists %>"></canvas>
 </div>
-
-
- </div>
