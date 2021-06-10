@@ -4,53 +4,51 @@
       <div class="pic_artist_show">
         <%= cl_image_tag @artist.picture.key%>
       </div>
-      <div class="artist_name name-show">
-        <a> <%= @artist.name %> </a>
+      <div class="artist_name">
+        <%= @artist.name %>
       </div>
-    </div>
 
-    <div>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary pub-button create-button" data-toggle="modal" data-target="#exampleModal">
-        Publishing
-      </button>
-    </div>
-  </div>
-
-  <hr>
-
-  <h2> Posts planning on <i class="fab fa-facebook dashboard"></i> </h2>
-  <%= render "shared/display_calendar_planned", albums: @albums, posts: @posts %>
-  <br>
-  <div id="graphstats">
-    <canvas id="myChart" data-stats="<%= @stats.to_json %>"></canvas>
-  </div>
-
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title over-title" id="exampleModalLabel">Add a publication</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary publish-button" class="create-button" data-toggle="modal" data-target="#exampleModal">
+        Publish
         </button>
+
+      <div class="modal_add_event">
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title over-title" id="exampleModalLabel">Add a publication</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body over-body">
+
+              <%= link_to "Album campaign", new_artist_album_url(@artist), role: "button", class: "btn btn-info popover-test modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
+              </a>
+
+
+              <%= link_to "Single post", new_artist_post_url(@artist), role: "button", class: "btn btn-info popover-test modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
+              </a>
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      
-        <div class="modal-body publishing">
-        
-        
-            <%= link_to "Album campaign", new_artist_album_url(@artist), role: "button", class: "btn btn-info popover-test modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %> 
-         
-        
-            <%= link_to "Single post", new_artist_post_url(@artist), role: "button", class: "btn btn-info popover-test modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
-         
-        
-      </div>
-    
-      
+  </div>
+
+  <%= render "shared/display_calendar_planned", albums: @albums, posts: @posts %>
+
+
+  <div class="stats">
+    <h2 class="title"> Analytics </h2>
+    <div id="graphstats">
+      <canvas id="myChart" width="400" height="100" data-stats="<%= @stats.to_json %>"></canvas>
     </div>
   </div>
+
 </div>

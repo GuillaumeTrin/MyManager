@@ -1,19 +1,17 @@
 <div class="marge_base">
 
   <div class="card_banner_artist">
-    <div class="title">
-      <h2><strong> All your artists</strong> </h2>
-    </div>
+      <h2 class="title" > All your artists</h2>
     <div class="card_position">
       <% @artists.each do |artist| %>
         <div class="card_artist">
-          <div class="artist_name">
-            <%= link_to artist.name, artist_path(artist) %>
-          </div>
           <div class="pic_artist">
             <%= link_to artist_path(artist) do %>
               <%= cl_image_tag artist.picture.key%>
             <% end %>
+          </div>
+          <div class="artist_name">
+            <%= link_to artist.name, artist_path(artist) %>
           </div>
         </div>
       <% end %>
@@ -21,19 +19,16 @@
   </div>
 
 
-  <h2>Your planning on <i class="fab fa-facebook dashboard" ></i></h2>
-
-
     <%= render "shared/display_calendar_planned", albums: @albums, posts: @posts %>
 
 
-  <hr>
+  <div class="stats">
+
+    <h2 class="title"> Analytics </h2>
+    <div id="graphstats">
+      <canvas class="w-100" id="myGlobalChart" width="400" height="100" data-stats="<%= @stats.to_json %>" data-artists="<%= @array_artists %>"></canvas>
+    </div>
+  </div>
 
 
-<h2> Latest stats </h2>
-<div id="graphstats">
-  <canvas class="w-100" id="myGlobalChart" data-stats="<%= @stats.to_json %>" data-artists="<%= @array_artists %>"></canvas>
 </div>
-
-
- </div>
