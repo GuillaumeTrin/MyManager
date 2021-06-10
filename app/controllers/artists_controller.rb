@@ -10,7 +10,7 @@ class ArtistsController < ApplicationController
       db_stats_array = @artist.stats.where('date > ?', DateTime.now - 8).to_a
       @stats = db_stat_extract(db_stats_array)
     else
-      UpdateOneArtistJob.perform_now(@artist)
+      UpdateOneArtistJob.perform_later(@artist)
     end
   end
 
