@@ -22,7 +22,14 @@ body {
   background-color: rgb(250, 250, 250);
   display: flex;
   min-height: 100vh;
+
+
+  h2, p, h1, h5, th, td, a {
+    font-family: 'Gotham', sans-serif;
+  }
+
 }
+
 
 .main-container {
   flex-grow: 1;

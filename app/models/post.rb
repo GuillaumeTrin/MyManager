@@ -15,6 +15,12 @@ class Post < ApplicationRecord
     true
   end
 
+  def has_album?
+    return false if self.album_id.nil?
+    
+    return true
+  end
+
   scope :current_week, -> { where(published_at: Date.today.beginning_of_week..Date.today.next_week) }
 end
 
