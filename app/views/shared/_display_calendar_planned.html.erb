@@ -10,7 +10,7 @@
           </div>
           <br>
           <% unless all_publishable %>
-            <h2><span class="badge badge-warning"> NEEDS UPDATES <i class="fas fa-exclamation-triangle"></i> </span></h2>
+            <h2><span class="badge badge-warning"> NEED UPDATES <i class="fas fa-exclamation-triangle"></i> </span></h2>
             <br>
             <p> <i class="far fa-edit"></i> : <strong> <%= posts.current_week.select{ |p| !p.publishable? }.size %> </strong>
 
