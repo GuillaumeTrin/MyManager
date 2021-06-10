@@ -9,39 +9,11 @@
       </div>
     </div>
 
-    <div class="modal_add_event">
+    <div>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary create-button" class="create-button" data-toggle="modal" data-target="#exampleModal">
-      Add an event
+      <button type="button" class="btn btn-primary pub-button create-button" data-toggle="modal" data-target="#exampleModal">
+        Publishing
       </button>
-
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title over-title" id="exampleModalLabel">Add an event</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body over-body">
-
-            <%= link_to "Plan the release of an album", new_artist_album_url(@artist), role: "button", class: "btn btn-info popover-test modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
-            </a>
-
-
-            <%= link_to "Plan a single post", new_artist_post_url(@artist), role: "button", class: "btn btn-info popover-test modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
-            </a>
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary modal-close-button" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -54,4 +26,31 @@
     <canvas id="myChart" data-stats="<%= @stats.to_json %>"></canvas>
   </div>
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title over-title" id="exampleModalLabel">Add a publication</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+        <div class="modal-body publishing">
+        
+        
+            <%= link_to "Album campaign", new_artist_album_url(@artist), role: "button", class: "btn btn-info popover-test modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %> 
+         
+        
+            <%= link_to "Single post", new_artist_post_url(@artist), role: "button", class: "btn btn-info popover-test modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
+         
+        
+      </div>
+    
+      
+    </div>
+  </div>
 </div>
