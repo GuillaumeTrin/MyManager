@@ -6,11 +6,11 @@
         <div class="card_planned_display">
           <div class="planned_title">
 
-            <h3><strong>Status week <%= Date.today.strftime("%U") %> </strong> <h3>
+            <h3><i class="far fa-file-alt"></i> <strong>Post status <br> week <%= Date.today.strftime("%U") %> </strong> <h3>
           </div>
           <br>
           <% unless all_publishable %>
-            <h2><span class="badge badge-warning"> NEEDS UPDATES <i class="fas fa-exclamation-triangle"></i> </span></h2>
+            <h2><span class="badge badge-warning"> NEED UPDATES <i class="fas fa-exclamation-triangle"></i> </span></h2>
             <br>
             <p> <i class="far fa-edit"></i> : <strong> <%= posts.current_week.select{ |p| !p.publishable? }.size %> </strong>
 
@@ -33,7 +33,7 @@
         </div>
 
         <div class="album_campaign planned_title">
-        <h3> <strong> Check your upcoming campaigns </strong> </h3>
+        <h3> <i class="fas fa-record-vinyl post"></i> <strong> Check your upcoming album campaigns </strong> </h3>
         <br>
         <h6>
           <% albums.each do |album| %>

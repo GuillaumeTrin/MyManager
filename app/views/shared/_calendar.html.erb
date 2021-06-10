@@ -4,7 +4,7 @@
     <% posts.each do |post| %>
       <div>
         <% if post.publishable? %>
-         
+
           <i class="fas fa-check-circle"></i>
         <% else %>
           <i class="fas fa-times-circle"></i>
@@ -12,18 +12,18 @@
         <% class_post = "single_post"
              if post.has_album? %>
              <i class="fas fa-record-vinyl post"></i>
-              
+
            <% else %>
-             <i class="far fa-envelope post"></i>
+             <i class="far fa-file-alt"></i>
 
            <% end %>
         <div class="size_post">
-           
+
           <%= link_to '#', data: {toggle: "modal", target: "#editPost#{post.id}"} do %>
-            
+
             <%= post.published_at.strftime("%H:%M") %> <span class=> <%= post.title%> <%= post.artist.name unless only_artist %>
           <% end %>
-          
+
         </div>
         <!-- Modal for each post-->
         <div class="modal fade bd-example-modal-lg" id="editPost<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="editPostModalLabel" aria-hidden="true">
@@ -46,7 +46,7 @@
                 </div>
 
               </div>
-             
+
           </div>
         </div>
 
