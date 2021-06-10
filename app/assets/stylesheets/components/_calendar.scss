@@ -10,7 +10,7 @@
   padding: 12px;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   border-radius: 5px;
-  margin: 0 16px 16px 0;
+  margin: 0 16px 24px 0;
   height: 594.5px;
 }
 
@@ -77,6 +77,11 @@
 }
 
 .simple-calendar {
+  .calendar-heading {
+    text-align: center;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
   table {
     border: 4px solid #ff5532;
   }
@@ -104,7 +109,7 @@
   padding: 12px;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   border-radius: 5px;
-  margin: 0 16px 16px 16px;
+  margin: 0 16px 24px 16px;
   height: 594.5px;
 }
 

@@ -1,19 +1,17 @@
 <div class="marge_base">
 
   <div class="card_banner_artist">
-    <div class="title">
-      <h2><strong> All your artists</strong> </h2>
-    </div>
+      <h2 class="title" > All your artists</h2>
     <div class="card_position">
       <% @artists.each do |artist| %>
         <div class="card_artist">
-          <div class="artist_name">
-            <%= link_to artist.name, artist_path(artist) %>
-          </div>
           <div class="pic_artist">
             <%= link_to artist_path(artist) do %>
               <%= cl_image_tag artist.picture.key%>
             <% end %>
+          </div>
+          <div class="artist_name">
+            <%= link_to artist.name, artist_path(artist) %>
           </div>
         </div>
       <% end %>

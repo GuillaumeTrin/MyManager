@@ -21,6 +21,7 @@
     transition: transform .2s;
     box-shadow: 5px 5px 5px rgba(73, 73, 73, 0.288);
     opacity: 0.33;
+    margin-bottom: 16px;
   }
   img:hover {
     transform: scale(1.1);
@@ -52,6 +53,11 @@
 }
 
 .artist_name {
+  font-size: 24px;
+  font-style: bold;
+  color: black;
+  margin-bottom: 32px;
+
   a {
     font-size: 16px;
     font-style: bold;
@@ -65,32 +71,45 @@
 .card_position_show {
   align-content: flex-start;
   display: flex;
+  flex-direction: column;
 }
 
 
 .pic_artist_show {
   img {
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
     box-shadow: 5px 5px 5px rgba(73, 73, 73, 0.288);
     display: flex;
-    margin-right: 16px;
+    margin-bottom: 8px;
   }
 }
 
 
 .card_artist_show {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   flex-grow: 1;
-  padding: 15px 20px 10px 40px;
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 32px;
 }
 
 .modal_add_event {
   display: flex;
   align-items: center;
-  right: 10%;
 }
 
+.publish-button {
+  background-color: #ff5532;
+  font-family: 'Noto Sans KR', sans-serif;
+  border: 1px solid #ff5532;
+  width: 250px;
+}
+
+.publish-button:hover {
+  background-color: white;
+  border: 1px solid #ff5532;
+  color: #ff5532;
+}
