@@ -20,6 +20,7 @@
                   <%= link_to '#', data: {toggle: "modal", target: "#editPost#{post.id}"} do %>
                     <strong> <%= post.published_at.strftime("%a-%H:%M") %> </strong>
                     <strong> <%= post.artist.name %> </strong>
+                    
                   <% end %>    
                 <% end %>
               </div>

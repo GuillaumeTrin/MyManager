@@ -5,8 +5,6 @@ class ArtistsController < ApplicationController
     start_date = params.fetch(:start_date, Date.current).to_date
     @posts = @artist.posts
     @all_publishable = @posts.current_week.all?(&:publishable?)
-
-
     @today_posts = Post.where(published_at: Date.today..Date.today + 1.days, artist: @artist)
     if havestats(@artist)
       db_stats_array = @artist.stats.where('date > ?', DateTime.now - 8).to_a
@@ -26,7 +24,7 @@ class ArtistsController < ApplicationController
 
     @stats = db_stat_extract(db_stats_array)
     respond_to do |format|
-      format.json { render json: {stats: @stats, name: @artist.name} }
+      format.json { render json: { stats: @stats, name: @artist.name } }
     end
   end
 
