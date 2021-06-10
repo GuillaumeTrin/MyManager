@@ -16,10 +16,9 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.artist = @artist
 
-    prev = Rails.application.routes.recognize_path(request.referrer)
     if @post.save!
       schedule_post(@post)
-      if prev[:controller] == "posts"
+      if previous_controller == "posts"
         redirect_to artist_path(@post.artist), notice: "You've just created a new post"
       else
         redirect_to artist_album_path(@artist, params[:post][:album_id])
@@ -39,7 +38,12 @@ class PostsController < ApplicationController
   def update
     @post.update!(post_params)
     reschedule_post(@post)
-    redirect_to artist_path(@post.artist)
+
+    if previous_controller == "posts"
+      redirect_to artist_path(@post.artist)
+    else
+      redirect_to artist_album_path(@post.artist, @post.album)
+    end
   end
 
 
@@ -59,6 +63,11 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def previous_controller
+    Rails.application.routes.recognize_path(request.referrer)[:controller]
+  end
+  
 
   def set_post
     @post = Post.find(params[:id])
