@@ -19,8 +19,7 @@
   margin: 2px 16px 2px 16px;
   padding: 12px;
   overflow: hidden;
-  background: white;
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  background-color: #f2f2f2;
   display: flex;
   align-items: center;
   border-radius: 5px;
@@ -34,17 +33,13 @@
 }
 
 .album_campaign {
-  justify-content: space-between;
   margin: 24px 16px 24px 16px;
   padding: 12px;
   overflow: hidden;
-  background: white;
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
+  // background: white;
+  background-color: #f2f2f2;
   border-radius: 5px;
   flex-direction: column;
-  text-align: center;
   overflow: hidden;
 
   a {
@@ -132,17 +127,57 @@
   font-size: 52px;
 }
 
-.list-posts {
-  display: flex;
-  flex-direction: column;
-}
-
-.list-posts a:hover {
-  color: #ff5532;
-}
 
 .display-post-button-modal {
   &:hover {
     text-decoration: underline;
   }
+}
+
+.list-post {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.5s ease;
+
+
+  h4 {
+    font-weight: 600;
+  }
+
+  .artist-name {
+    color: #888888;
+    margin: 0;
+  }
+
+  .badge {
+    background-color: #ff5632;
+    color: white;
+    font-size: 0.8em;
+  }
+
+  &:hover {
+    background-color: #ff5632;
+  }
+
+
+
+  &:hover h4 {
+    color: white;
+  }
+
+  &:hover .artist-name {
+    color: white;
+  }
+
+  &:hover .badge {
+    background-color: #fff;
+    color: #6c757d;
+  }
+
+
 }

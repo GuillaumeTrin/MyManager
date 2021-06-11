@@ -4,14 +4,13 @@
       <div class="post_album">
         <h2 class="title" >Your tasks </h2>
         <div class="card_planned_display">
-          <div class="planned_title">
+          <div>
 
-            <h3><i class="far fa-file-alt"></i> <strong>Post status <br> week <%= Date.today.strftime("%U") %> </strong> <h3>
+            <h3 class="planned_title"><i class="far fa-file-alt"></i> <strong>Post status <br> week <%= Date.today.strftime("%U") %> </strong> <h3>
           </div>
           <br>
-          <% unless all_publishable %> 
+          <% unless all_publishable %>
             <h2><span class="check-icon" ><i class="fas fa-exclamation-circle"></i> </span></h2>
-            <br>
             <p> <i class="far fa-edit"></i> : <strong> <%= posts.current_week.select{ |p| !p.publishable? }.size %> </strong>
 
             <h6>
@@ -32,20 +31,20 @@
           <% end %>
         </div>
 
-        <div class="album_campaign planned_title">
-        <h3> <i class="fas fa-record-vinyl post"></i> <strong> Check your upcoming album campaigns </strong> </h3>
+        <div class="album_campaign">
+        <h3 class="planned_title"> <i class="fas fa-record-vinyl post"></i> <strong> Check your upcoming album campaigns </strong> </h3>
         <br>
-        <h6>
+        <div class="list-posts">
           <% albums.each do |album| %>
-            <div class="list-posts">
-            <%= link_to artist_album_path(album.artist, album) do %>
-            <strong> <%= album.name %> - Release: <%= album.out_at.strftime("%d/%m/%Y") %></strong> <br>
-            <%= album.artist.name %>
-
+              <%= link_to artist_album_path(album.artist, album), class: "list-post" do %>
+                <div class="d-flex flex-column">
+                  <h4><%= album.name %></h4>
+                  <p class="artist-name"><%= album.artist.name %></p>
+                </div>
+                <span class="badge badge-secondary"><%= album.out_at.strftime("%d/%m/%Y") %></span>
             <% end %>
-            </div>
           <% end %>
-        </h6>
+        </div>
       </div>
       </div>
 

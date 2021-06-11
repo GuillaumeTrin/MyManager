@@ -41,8 +41,7 @@
                 </div>
                 <div class="column right button-column">
                   <% from = (params['controller'] == 'dashboards') ? 'dashboard' : '' %>
-                  <%= link_to "Edit this post", edit_artist_post_path(post.artist_id, post.id, params: { from: from }), role: "button", class: "btn btn-info popover-test modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
-
+                  <%= link_to "Edit this post", edit_artist_post_path(post.artist_id, post.id, params: { from: from }), role: "button", class: "btn btn-info popover-test edit-button", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
                   <%= link_to "Delete this post", post_path(post), method: :delete,  class: 'link-delete', role: "button", class: "btn btn-danger delete-modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute.", data: {confirm: "Are you sure?"} %>
                 </div>
 
