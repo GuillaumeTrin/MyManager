@@ -68,6 +68,14 @@
   color: red;
 }
 
+.fas.fa-clock {
+  color: #FFC107;
+}
+
+.fas.fa-exclamation-circle {
+  color: #FFC107;
+}
+
 .fab.fa-facebook.dashboard {
   color: blue;
 }
@@ -131,4 +139,10 @@
 
 .list-posts a:hover {
   color: #ff5532;
+}
+
+.display-post-button-modal {
+  &:hover {
+    text-decoration: underline;
+  }
 }

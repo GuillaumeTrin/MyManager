@@ -1,7 +1,9 @@
 <div class="marge_base">
 
   <div class="card_banner_artist">
-      <h2 class="title" > All your artists</h2>
+    <div class="title">
+      <h2><strong> All your artists</strong> </h2>
+    </div>
     <div class="card_position">
       <% @artists.each do |artist| %>
         <div class="card_artist">
@@ -19,16 +21,27 @@
   </div>
 
 
-    <%= render "shared/display_calendar_planned", albums: @albums, posts: @posts %>
+  <h2>Your planning on <i class="fab fa-facebook dashboard" ></i></h2>
+  <%= render "shared/display_calendar_planned", albums: @albums, posts: @posts %>
 
 
-  <div class="stats">
 
-    <h2 class="title"> Analytics </h2>
-    <div id="graphstats">
-      <canvas class="w-100" id="myGlobalChart" width="400" height="100" data-stats="<%= @stats.to_json %>" data-artists="<%= @array_artists %>"></canvas>
-    </div>
-  </div>
+  <hr>
 
 
+<h2 class="title">Engagement Rate </h2>
+<h5>  Number of interactions on the FaceBook page </h5>
+<h5>  (Sum of : "Like" / "Share" / "Click" / "Comment" ) </h5>
+  <div id="graphstats">
+  <canvas class="w-100" id="myGlobalChart" data-stats="<%= @stats.to_json %>" data-artists="<%= @array_artists %>"></canvas>
 </div>
+<hr>
+
+
+
+<hr>
+
+
+  <%= link_to 'Disconnect Facebook', disconnect_path %>
+
+ </div>

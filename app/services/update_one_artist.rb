@@ -15,7 +15,7 @@ class UpdateOneArtist < BaseService
     latest_date = artist.stats.order('date desc').limit(1).to_a[0]
     return false if latest_date.nil?
 
-    return Date.today > latest_date.date
+    return latest_date.date > Date.today
   end
 
   def get_fb_stats(artist)
@@ -24,7 +24,6 @@ class UpdateOneArtist < BaseService
     now = Date.today
     a_week_ago = (now - 8)
     response = token.get("#{artist.id_facebook}/insights/page_post_engagements/?since=#{a_week_ago}")
-  
     json = JSON.parse(response.body)
     json["data"][1]["values"]
   end
