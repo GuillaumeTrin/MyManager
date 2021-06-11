@@ -6,6 +6,7 @@
     <div class="new-post-form">
     <%= simple_form_for([@artist, @post], html: {multipart: true}) do |f| %>
       <div class="form-inputs">
+        <%= f.input :from, as: :hidden, input_html: { value: @from } %>
         <%= f.input :published_at, :label => "Choose a date and a time to publish", html5: true, input_html: { "data-preview-target": "date", "data-action": "change->preview#getdate" } %>
         <%= f.input :title, :label => "Enter your post title", input_html: { "data-preview-target": "title", "data-action": "input->preview#gettitle" } %>
         <%= f.input :content, :label => "Enter your post content", input_html: { "data-preview-target": "content", "data-action": "input->preview#getcontent" } %>

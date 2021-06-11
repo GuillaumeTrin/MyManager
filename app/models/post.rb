@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+
+  attr_accessor :from
   belongs_to :artist
   belongs_to :album, optional: true
   has_one_attached :picture
@@ -17,7 +19,7 @@ class Post < ApplicationRecord
 
   def has_album?
     return false if self.album_id.nil?
-    
+
     return true
   end
 
