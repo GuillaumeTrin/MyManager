@@ -7,6 +7,7 @@
    font-family: 'Noto Sans KR', sans-serif;
    font-size: 16px;
    display: flex;
+   width: 300px;
    align-items: center;
   p {
     margin: 0;
@@ -14,6 +15,8 @@
   .fa-facebook {
     font-size: 48px;
     margin-right: 24px;
+    display: inline-block;
+    align-items: center;
   }
 }
 .facebook_button:hover {
