@@ -7,24 +7,24 @@
     <div class="card_position">
       <% @artists.each do |artist| %>
         <div class="card_artist">
-          <div class="artist_name">
-            <%= link_to artist.name, artist_path(artist) %>
-          </div>
-          <div class="pic_artist"> 
+          <div class="pic_artist">
             <%= link_to artist_path(artist) do %>
               <%= cl_image_tag artist.picture.key%>
             <% end %>
+          </div>
+          <div class="artist_name">
+            <%= link_to artist.name, artist_path(artist) %>
           </div>
         </div>
       <% end %>
     </div>
   </div>
- 
-  
+
+
   <h2>Your planning on <i class="fab fa-facebook dashboard" ></i></h2>
   <%= render "shared/display_calendar_planned", albums: @albums, posts: @posts %>
 
- 
+
 
   <hr>
 
