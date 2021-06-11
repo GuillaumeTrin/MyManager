@@ -9,8 +9,8 @@
             <h3><i class="far fa-file-alt"></i> <strong>Post status <br> week <%= Date.today.strftime("%U") %> </strong> <h3>
           </div>
           <br>
-          <% unless all_publishable %>
-            <h2><span class="badge badge-warning"> NEED UPDATES <i class="fas fa-exclamation-triangle"></i> </span></h2>
+          <% unless all_publishable %> 
+            <h2><span class="check-icon" ><i class="fas fa-exclamation-circle"></i> </span></h2>
             <br>
             <p> <i class="far fa-edit"></i> : <strong> <%= posts.current_week.select{ |p| !p.publishable? }.size %> </strong>
 

@@ -57,18 +57,19 @@
 }
 
 .simple-calendar .delete-modal-button {
-  background-color: #ff5532;
+
+  background-color: white;
   font-family: 'Noto Sans KR', sans-serif;
   border: 1px solid #ff5532;
   border-radius: 8px;
   margin-top: 24px;
-  color: white;
+  color: #ff5532;
 }
 
 .simple-calendar .delete-modal-button:hover {
-  background-color: white;
+  background-color: #ff5532;
   border: 1px solid #ff5532;
-  color: #ff5532;
+  color: white;
 }
 
 .over-calendar-body {

@@ -8,12 +8,12 @@
         <a class="nav-link <%= 'active' if i == @tab_active %>" id="post-<%= i %>-tab" data-toggle="tab" href="#post-<%= i %>" >
           <%= l post.published_at.to_date, format: :short %> 
           
-          <% icon_class = post.publishable? ? 'fas fa-check-circle' : 'fas fa-times-circle' %>
+          <% icon_class = post.publishable? ? 'fas fa-check-circle' : 'fas fa-clock' %>
           <%= content_tag(:i, nil, class: icon_class) %>
         </a>
       </li>
     <% end %>
-    <li> <%= link_to "Validate my campaign",  artist_path(@album.artist)+"?start_date=#{@generated_posts.first.published_at.strftime("%Y-%m-%d")}#calendar-anchor", class: "btn btn-primary validate-button" %> </li>
+    <li> <%= link_to "Back to dashboard",  artist_path(@album.artist)+"?start_date=#{@generated_posts.first.published_at.strftime("%Y-%m-%d")}#calendar-anchor", class: "btn btn-primary validate-button" %> </li>
   </ul>
 
   <div class="tab-content" id="myTabContent">
