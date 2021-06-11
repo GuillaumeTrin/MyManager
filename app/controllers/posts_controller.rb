@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.update!(post_params)
+    @post.update(post_params)
     reschedule_post(@post)
 
     if previous_controller == "posts"
@@ -88,6 +88,6 @@ class PostsController < ApplicationController
   end
 
   def reschedule_post(post)
-    RescheduleFacebookJob.perform_now(post)
+    RescheduleFacebookJob.perform_later(post)
   end
 end
