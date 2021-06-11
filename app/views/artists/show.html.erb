@@ -46,8 +46,10 @@
 
   <div class="stats">
     <h2 class="title">Engagement Rate </h2>
-    <h5>  Number of interactions on the FaceBook page </h5>
-    <h5>  (Sum of : "Like" / "Share" / "Click" / "Comment" ) </h5>
+    <div class="d-flex">
+      <h5 class="mr-2">  Number of interactions on the FaceBook page </h5>
+      <p>  (Sum of : "Like" / "Share" / "Click" / "Comment" ) </p>
+    </div>
 
     <div id="graphstats">
       <canvas id="myChart" width="400" height="100" data-stats="<%= @stats.to_json %>"></canvas>

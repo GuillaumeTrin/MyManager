@@ -2,7 +2,7 @@
 
   <div class="card_banner_artist">
     <div class="title">
-      <h2><strong> All your artists</strong> </h2>
+      <h2>All your artists</h2>
     </div>
     <div class="card_position">
       <% @artists.each do |artist| %>
@@ -21,27 +21,18 @@
   </div>
 
 
-  <h2>Your planning on <i class="fab fa-facebook dashboard" ></i></h2>
   <%= render "shared/display_calendar_planned", albums: @albums, posts: @posts %>
 
 
+  <div class="stats">
+    <h2 class="title">Engagement Rate </h2>
+    <div class="d-flex">
+      <h5 class="mr-2">  Number of interactions on the FaceBook pages </h5>
+      <p>  (Sum of : "Like" / "Share" / "Click" / "Comment" ) </p>
+    </div>
 
-  <hr>
-
-
-<h2 class="title">Engagement Rate </h2>
-<h5>  Number of interactions on the FaceBook page </h5>
-<h5>  (Sum of : "Like" / "Share" / "Click" / "Comment" ) </h5>
-  <div id="graphstats">
-  <canvas class="w-100" id="myGlobalChart" data-stats="<%= @stats.to_json %>" data-artists="<%= @array_artists %>"></canvas>
+    <div id="graphstats">
+      <canvas class="w-100"  width="400" height="100" id="myGlobalChart" data-stats="<%= @stats.to_json %>" data-artists="<%= @array_artists %>"></canvas>
+    </div>
+  </div>
 </div>
-<hr>
-
-
-
-<hr>
-
-
-  <%= link_to 'Disconnect Facebook', disconnect_path %>
-
- </div>

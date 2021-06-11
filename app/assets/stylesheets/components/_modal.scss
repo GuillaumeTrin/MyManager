@@ -111,11 +111,16 @@
   width: 180px;
 }
 
-.edit-button {
+.simple-calendar .edit-button {
   background-color: #ff5532;
   border: 1px solid #ff5532;
   color: white;
   border-radius: 8px;
   font-family: 'Noto', sans-serif;
   width: 180px;
+
+  &:hover {
+    background-color: white;
+    color: #ff5532;
+  }
 }
