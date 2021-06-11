@@ -132,3 +132,9 @@
 .list-posts a:hover {
   color: #ff5532;
 }
+
+.display-post-button-modal {
+  &:hover {
+    text-decoration: underline;
+  }
+}

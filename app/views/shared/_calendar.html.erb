@@ -19,10 +19,10 @@
            <% end %>
         <div class="size_post">
 
-          <%= link_to '#', data: {toggle: "modal", target: "#editPost#{post.id}"} do %>
 
-            <%= post.published_at.strftime("%H:%M") %> <span class=> <%= post.title%> <%= post.artist.name unless only_artist %>
-          <% end %>
+          <div class='display-post-button-modal' data-toggle="modal" data-target=<%= "#editPost#{post.id}" %>>
+            <%= post.published_at.strftime("%H:%M") %> <%= post.title%> <%= post.artist.name unless only_artist %>
+          </div>
 
         </div>
         <!-- Modal for each post-->
@@ -40,7 +40,8 @@
                   <%= render "/dashboards/post_preview", post:post %>
                 </div>
                 <div class="column right button-column">
-                  <%= link_to "Edit this post", edit_artist_post_path(post.artist_id, post.id), role: "button", class: "btn btn-info popover-test modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
+                  <% from = (params['controller'] == 'dashboards') ? 'dashboard' : '' %>
+                  <%= link_to "Edit this post", edit_artist_post_path(post.artist_id, post.id, params: { from: from }), role: "button", class: "btn btn-info popover-test modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute."  %>
 
                   <%= link_to "Delete this post", post_path(post), method: :delete,  class: 'link-delete', role: "button", class: "btn btn-danger delete-modal-button", title: "Popover title", datacontent: "Popover body content is set in this attribute.", data: {confirm: "Are you sure?"} %>
                 </div>

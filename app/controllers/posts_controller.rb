@@ -28,7 +28,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @from = params["from"].presence
+  end
 
   def destroy
     @post.destroy
@@ -40,7 +42,11 @@ class PostsController < ApplicationController
     reschedule_post(@post)
 
     if previous_controller == "posts"
-      redirect_to artist_path(@post.artist)
+      if params.dig('post', 'from') == "dashboard"
+        redirect_to root_path
+      else
+        redirect_to artist_path(@post.artist)
+      end
     else
       redirect_to artist_album_path(@post.artist, @post.album)
     end
@@ -67,7 +73,7 @@ class PostsController < ApplicationController
   def previous_controller
     Rails.application.routes.recognize_path(request.referrer)[:controller]
   end
-  
+
 
   def set_post
     @post = Post.find(params[:id])
